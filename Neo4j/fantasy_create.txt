@@ -103,14 +103,14 @@ CREATE
   (user_20)-[:IS_IN]->(chat_2)
 
 CREATE
-  (user_1)-[:SENDS]->(msg_1)-[:SENT_IN]->(chat_1)
-  (user_4)-[:SENDS]->(msg_2)-[:SENT_IN]->(chat_4)
-  (user_5)-[:SENDS]->(msg_3)-[:SENT_IN]->(chat_3)
-  (user_6)-[:SENDS]->(msg_4)-[:SENT_IN]->(chat_4)
-  (user_8)-[:SENDS]->(msg_5)-[:SENT_IN]->(chat_2)
-  (user_10)-[:SENDS]->(msg_6)-[:SENT_IN]->(chat_2)
-  (user_15)-[:SENDS]->(msg_7)-[:SENT_IN]->(chat_2)
-  (user_16)-[:SENDS]->(msg_8)-[:SENT_IN]->(chat_1)
-  (user_18)-[:SENDS]->(msg_9)-[:SENT_IN]->(chat_1)
+  (user_1)-[:SENDS]->(msg_1)-[:SENT_IN]->(chat_1),
+  (user_4)-[:SENDS]->(msg_2)-[:SENT_IN]->(chat_4),
+  (user_5)-[:SENDS]->(msg_3)-[:SENT_IN]->(chat_3),
+  (user_6)-[:SENDS]->(msg_4)-[:SENT_IN]->(chat_4),
+  (user_8)-[:SENDS]->(msg_5)-[:SENT_IN]->(chat_2),
+  (user_10)-[:SENDS]->(msg_6)-[:SENT_IN]->(chat_2),
+  (user_15)-[:SENDS]->(msg_7)-[:SENT_IN]->(chat_2),
+  (user_16)-[:SENDS]->(msg_8)-[:SENT_IN]->(chat_1),
+  (user_18)-[:SENDS]->(msg_9)-[:SENT_IN]->(chat_1),
   (user_20)-[:SENDS]->(msg_10)-[:SENT_IN]->(chat_2)
 
