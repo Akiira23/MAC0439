@@ -23,6 +23,7 @@ CREATE TABLE APOSTA (
    partida_ID INT NOT NULL,
    torneio_ID INT NOT NULL,
    id_usuario_aposta INT NOT NULL,
+   aposta_finalizada BOOLEAN DEFAULT FALSE,
 	FOREIGN KEY(id_usuario_aposta) REFERENCES USUARIO(user_ID)
 		ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -51,5 +52,5 @@ CREATE TABLE PROJETO (
    nome_projeto VARCHAR(40) NOT NULL,
    PRIMARY KEY (projeto_user_id, nome_projeto),
 	FOREIGN KEY(projeto_user_id) REFERENCES USUARIO_PREMIUM(projeto_ID)
-		ON DELETE CASCADE ON UPDATE SET NULL
+		ON DELETE CASCADE ON UPDATE SET CASCADE
 )
