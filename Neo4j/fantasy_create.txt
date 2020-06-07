@@ -1,0 +1,54 @@
+// USUÁRIO
+
+CREATE (user_1:User {id:1, nome:'Filipe Edson Mateus Silva', email:'diogomatheusmonteiro@gmail.com'})
+
+CREATE (user_2:User {id:2, nome:'Juan Marcelo Galvão', email:'juanmarcelogalvao_@gmail.com'})
+
+CREATE (user_3:User {id:3, nome:'Priscila Analu Stefany Campos', email:'priscilaanalustefanycampos@gmail.com'})
+
+CREATE (user_4:User {id:4, nome:'Luzia Eliane Galvão', email:'luziaelianegalvao@gmail.com'})
+
+CREATE (user_5:User {id:5, nome:'Antonio Joaquim Juan Jesus', email:'antoniojoaquim_@gmail.com'})
+
+CREATE (user_6:User {id:6, nome:'Rodrigo Murilo Melo', email:'rodrigomurilo2_@gmail.com'})
+
+CREATE (user_7:User {id:7, nome:'Isabella Josefa Lara da Mata', email:'isabellajose.2@gmail.com'})
+
+CREATE (user_8:User {id:8, nome:'Marcos Bento Almada', email:'marcosbentoalmada_3@gmail.com'})
+
+CREATE (user_9:User {id:9, nome:'Guilherme Leonardo Barros', email:'guilhermeleonardobarros_21@gmail.com'})
+
+CREATE (user_10:User {id:10, nome:'Jorge Guilherme Alves', email:'jorgeguilhermealves_30@gmail.com'})
+
+CREATE (user_11:User {id:11, nome:'Sophia Ana Daiane Carvalho', email:'sophiaanadaianecarvalho_1@gmail.com.br'})
+
+CREATE (user_12:User {id:12, nome:'Lorenzo Yago dos Santos', email:'lorenzoyagodossantos_31@gmail.com.br'})
+
+CREATE (user_13:User {id:13, nome:'Caleb Enrico Martin Gonçalves', email:'lcalebenricomartingoncalves@gmail.com.br'})
+
+CREATE (user_14:User {id:14, nome:'Julio Arthur Cardoso', email:'julioarthurcardoso37@gmail.com.br'})
+
+CREATE (user_15:User {id:15, nome:'Nathan Bruno Osvaldo Viana', email:'nathanbrunoosvaldoviana_21@gmail.com.br'})
+
+CREATE (user_16:User {id:16, nome:'Márcio Sebastião Nascimento', email:'marciosebastiaonascimento@gmail.com.br'})
+
+CREATE (user_17:User {id:17, nome:'Levi Theo Vinicius Barbosa', email:'levitheoviniciusbarbosa_10@gmail.com.br'})
+
+CREATE (user_18:User {id:18, nome:'Edson Felipe Thiago de Paula', email:'eedsonfelipethiagodepaula@gmail.com.br'})
+
+CREATE (user_19:User {id:19, nome:'Andrea Brenda da Rocha', email:'andreabrendadarocha_12@gmail.com.br'})
+
+CREATE (user_20:User {id:20, nome:'Victor Arthur Henrique da Luz', email:'victorarthurhenriquedaluz19@gmail.com.br'})
+
+CREATE (user_21:User {id:21, nome:'Catarina Daiane Sônia Castro', email:'catarinadaianesoniacastro_70@gmail.com.br'})
+
+CREATE (user_22:User {id:22, nome:'Sandra Mariane Agatha Silva', email:'sandramarianeagathasilva13@gmail.com.br'})
+
+// ORGANIZAÇÃO
+
+CREATE (org_1:Organization {id:1, nome:'Logitech G'})
+
+CREATE (org_2:Organization {id:2, nome:'Gamers Club'})
+
+CREATE (org_3:Organization {id:3, nome:'BENQ'})
+
