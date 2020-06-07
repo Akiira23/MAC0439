@@ -1,4 +1,4 @@
-USUARIO
+/*USUARIO*/
 
 INSERT INTO usuario (user_ID, tel_DDD, tel_Numero, CPF, senha, email, nome, sexo)
    VALUES (1, 19, 35685816, '57132727290', '0PB6iPqx95', 'diogomatheusmonteiro@gmail.com', 'Filipe Edson Mateus Silva', 'M');
@@ -45,7 +45,7 @@ INSERT INTO usuario (user_ID, tel_DDD, tel_Numero, CPF, saldo, senha, email, nom
 INSERT INTO usuario (user_ID, tel_DDD, tel_Numero, CPF, saldo, senha, email, nome, sexo)
    VALUES (22, 21, 993246081, '84116219878', 6100, 'GqnQzTjAPb', 'sandramarianeagathasilva13@gmail.com.br', 'Sandra Mariane Agatha Silva', 'F');     
    
-APOSTA
+/*APOSTA*/
 
 INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
    VALUES (1, 100, 'Flamengo', 2.3, '2020-04-18 10:34:09 AM', 554, 8, 1);
@@ -84,7 +84,7 @@ INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_I
 INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
    VALUES (18, 700, 'New Jersey Nets', 2.5, '2019-06-18 08:35:00 PM', 604, 1, 13);
    
-USUARIO_PREMIUM
+/*USUARIO_PREMIUM*/
 
 INSERT INTO usuario_premium (premium_ID, projeto_ID)
    VALUES (9, 1);
@@ -101,7 +101,7 @@ INSERT INTO usuario_premium (premium_ID, projeto_ID)
 INSERT INTO usuario_premium (premium_ID, projeto_ID)
    VALUES (22, 7);
    
-ORGANIZACAO
+/*ORGANIZACAO*/
 
 INSERT INTO organizacao (organizacao_ID, nome_org, CEO)
    VALUES (1, 'Logitech G', 'Bracken P. Darrell');
@@ -111,7 +111,7 @@ INSERT INTO organizacao (organizacao_ID, nome_org, CEO)
    VALUES (3, 'BENQ', 'Conway Lee');
 
 
-PERTENCE
+/*PERTENCE*/
 
 INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
    VALUES (9, 1);
@@ -142,8 +142,9 @@ INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
 INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
    VALUES (22, 2);
 INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
-   VALUES (22, 3);      
-PROJETO
+   VALUES (22, 3); 
+   
+/*PROJETO*/
 
 INSERT INTO projeto (projeto_user_id, nome_projeto)
    VALUES (1, 'Torneio #1');
