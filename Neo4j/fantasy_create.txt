@@ -52,3 +52,65 @@ CREATE (org_2:Organization {id:2, nome:'Gamers Club'})
 
 CREATE (org_3:Organization {id:3, nome:'BENQ'})
 
+
+// CHATS
+
+CREATE (chat_1:Chat {id:1})
+CREATE (chat_2:Chat {id:2})
+CREATE (chat_3:Chat {id:3})
+CREATE (chat_4:Chat {id:4})
+
+// MENSSAGEM
+
+CREATE (msg_1:Message {id:1, content:'Salve!'})
+CREATE (msg_2:Message {id:2, content:'Bom dia!'})
+CREATE (msg_3:Message {id:3, content:'LOOOOL!'})
+CREATE (msg_4:Message {id:4, content:'Passa o recurso!'})
+CREATE (msg_5:Message {id:5, content:'Estou chegando, mais 10 minutos no maximo!'})
+CREATE (msg_6:Message {id:6, content:'doisjadiosj'})
+CREATE (msg_7:Message {id:7, content:'Duas melancias e quatro uvas, estou de dieta!'})
+CREATE (msg_8:Message {id:8, content:'Mande os termos do contrato por favor!'})
+CREATE (msg_9:Message {id:9, content:'Tão zuando o bagulho!'})
+CREATE (msg_10:Message {id:10, content:'Cheater!'})
+
+// RELAÇÕES
+
+CREATE
+  (user_1)-[:PARTICIPATES]->(org_1),
+  (user_1)-[:PARTICIPATES]->(org_2),
+  (user_2)-[:PARTICIPATES]->(org_1),
+  (user_4)-[:PARTICIPATES]->(org_3),
+  (user_6)-[:PARTICIPATES]->(org_2),
+  (user_8)-[:PARTICIPATES]->(org_3),
+  (user_18)-[:PARTICIPATES]->(org_1)
+  
+
+
+CREATE
+  (user_1)-[:IS_IN]->(chat_1),
+  (user_2)-[:IS_IN]->(chat_1),
+  (user_3)-[:IS_IN]->(chat_1),
+  (user_4)-[:IS_IN]->(chat_4),
+  (user_5)-[:IS_IN]->(chat_3),
+  (user_6)-[:IS_IN]->(chat_4),
+  (user_8)-[:IS_IN]->(chat_2),
+  (user_10)-[:IS_IN]->(chat_2),
+  (user_11)-[:IS_IN]->(chat_3),
+  (user_13)-[:IS_IN]->(chat_3),
+  (user_15)-[:IS_IN]->(chat_2),
+  (user_16)-[:IS_IN]->(chat_1),
+  (user_18)-[:IS_IN]->(chat_1),
+  (user_20)-[:IS_IN]->(chat_2)
+
+CREATE
+  (user_1)-[:SENDS]->(msg_1)-[:SENT_IN]->(chat_1)
+  (user_4)-[:SENDS]->(msg_2)-[:SENT_IN]->(chat_4)
+  (user_5)-[:SENDS]->(msg_3)-[:SENT_IN]->(chat_3)
+  (user_6)-[:SENDS]->(msg_4)-[:SENT_IN]->(chat_4)
+  (user_8)-[:SENDS]->(msg_5)-[:SENT_IN]->(chat_2)
+  (user_10)-[:SENDS]->(msg_6)-[:SENT_IN]->(chat_2)
+  (user_15)-[:SENDS]->(msg_7)-[:SENT_IN]->(chat_2)
+  (user_16)-[:SENDS]->(msg_8)-[:SENT_IN]->(chat_1)
+  (user_18)-[:SENDS]->(msg_9)-[:SENT_IN]->(chat_1)
+  (user_20)-[:SENDS]->(msg_10)-[:SENT_IN]->(chat_2)
+
