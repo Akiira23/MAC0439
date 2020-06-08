@@ -1,4 +1,4 @@
-{"esporte":"futebol", "descricao":"pessoas correm e chutam uma bola, nada especial"},
+[{"esporte":"futebol", "descricao":"pessoas correm e chutam uma bola, nada especial"},
 {"esporte":"volei", "descricao":"EXPLOSAO XACABUM É A DANÇA DO VERÃO MELHOR ESPORTE"},
 {"esporte":"hockey", "descricao":"gente com frio mas que curte uma briga"},
 {"esporte":"futebol americano", "descricao":"pessoas gigantes correndo muitos quilometros"},
@@ -7,4 +7,4 @@
 {"esporte":"polo", "descricao":"homens bem vestidos"},
 {"esporte":"polo aquatico", "descricao":"homens musculosos"},
 {"esporte":"rugby", "descricao":"igual futebol americano, mas sem a armadura, muita dor envolvida"},
-{"esporte":"amarelinha", "descricao":"o esporte dos deuses"}
+{"esporte":"amarelinha", "descricao":"o esporte dos deuses"}]
