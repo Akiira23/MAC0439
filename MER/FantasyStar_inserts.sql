@@ -83,7 +83,79 @@ INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_I
    VALUES (17, 500, 'Boston Celtics', 1.35, '2019-06-18 08:35:00 PM', 604, 1, 10);
 INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
    VALUES (18, 700, 'New Jersey Nets', 2.5, '2019-06-18 08:35:00 PM', 604, 1, 13);
-   
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (19, TRUE, 1000, 'Alemanha', 1.25, '2020-03-21 09:20:55 PM', 15, 21, 11);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (20, FALSE, 100, 'Brasil', 2.1, '2020-03-21 09:21:55 PM', 15, 21, 12);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (21, FALSE, 200, 'Brasil', 2.5, '2020-03-21 09:40:00 PM', 15, 21, 10);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (22, TRUE, 100, 'Alemanha', 1.15, '2020-03-21 09:30:35 PM', 15, 21, 5);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (23, FALSE, 800, 'Natus Vincere', 1.25, '2020-02-17 07:10:35 PM', 185, 241, 14);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (24, TRUE, 400, 'G2', 2.1, '2020-02-17 07:11:54 PM', 185, 241, 15);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (25, TRUE, 700, 'G2', 1.7, '2020-02-17 07:31:10 PM', 185, 241, 16);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (26, FALSE, 200, 'Natus Vincere', 1.95, '2020-02-17 07:40:54 PM', 185, 241, 17);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (27, TRUE, 100, 'G2', 1.25, '2020-02-17 07:41:27 PM', 185, 241, 10);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (28, FALSE, 100, 'Natus Vincere', 2.7, '2020-02-17 07:55:02 PM', 185, 241, 12);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (29, FALSE, 200, 'Pittsburgh Steelers', 3.5, '2020-05-06 08:00:55 PM', 45, 91, 18);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (30, TRUE, 300, 'Dallas Cowboys', 1.15, '2020-05-06 08:00:14 PM', 45, 91, 19);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (31, TRUE, 450, 'Dallas Cowboys', 1.15, '2020-05-06 08:07:53 PM', 45, 91, 20);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (32, TRUE, 700, 'Dallas Cowboys', 1.15, '2020-05-06 07:08:46 PM', 45, 91, 21);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (33, FALSE, 1000, 'Pittsburgh Steelers', 5.5, '2020-05-06 08:20:18 PM', 45, 91, 22);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (34, TRUE, 1000, 'Dallas Cowboys', 1.1, '2020-05-06 08:37:24 PM', 45, 91, 11);
+INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (35, 500, 'Highlanders', 1.75, '2020-06-08 11:00:55 AM', 4, 199, 2);
+INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (36, 800, 'Chiefs', 1.4, '2020-06-08 11:00:14 AM', 4, 199, 3);
+INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (37, 1000, 'Highlanders', 1.75, '2020-06-08 11:00:55 AM', 4, 199, 8);
+INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (38, 900, 'Chiefs', 1.4, '2020-06-08 11:00:14 AM', 4, 199, 5);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (39, TRUE, 1000, 'New Jersey Nets', 1.7, '2020-05-10 08:34:09 PM', 601, 1, 9);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (40, FALSE, 1000, 'Los Angeles Lakers', 1.9, '2020-05-10 08:37:09 PM', 601, 1, 17);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (41, FALSE, 100, 'Los Angeles Lakers', 2.0, '2020-05-10 08:35:00 PM', 601, 1, 10);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (42, TRUE, 500, 'New Jersey Nets', 1.6, '2020-05-10 08:35:00 PM', 601, 1, 15);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (43, TRUE, 500, 'New Jersey Nets', 1.9, '2020-05-08 06:04:19 PM', 591, 1, 7);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (44, FALSE, 100, 'Chicago Bulls', 1.5, '2020-05-08 06:07:39 PM', 591, 1, 11);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (45, FALSE, 600, 'Chicago Bulls', 1.8, '2020-05-08 06:25:50 PM', 591, 1, 13);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (46, TRUE, 200, 'New Jersey Nets', 1.7, '2020-05-08 06:35:07 PM', 591, 1, 18);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (47, FALSE, 800, 'Los Angeles Lakers', 2.1, '2020-05-05 04:04:19 PM', 595, 1, 16);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (48, TRUE, 1000, 'Chicago Bulls', 1.5, '2020-05-05 04:07:39 PM', 595, 1, 19);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (49, TRUE, 800, 'Chicago Bulls', 1.3, '2020-05-05 04:25:50 PM', 595, 1, 11);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (50, FALSE, 500, 'Los Angeles Lakers', 2.5, '2020-05-05 04:35:07 PM', 595, 1, 4);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (51, FALSE, 800, 'Chicago Bulls', 1.5, '2020-01-04 07:01:19 PM', 505, 1, 16);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (52, TRUE, 1000, 'Boston Celtics', 1.9, '2020-01-04 07:08:39 PM', 505, 1, 15);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (53, TRUE, 800, 'Boston Celtics', 1.4, '2020-01-04 07:37:50 PM', 505, 1, 6);
+INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   VALUES (54, FALSE, 500, 'Chicago Bulls', 1.9, '2020-01-04 07:45:07 PM', 505, 1, 12);
+
 /*USUARIO_PREMIUM*/
 
 INSERT INTO usuario_premium (premium_ID, projeto_ID)
@@ -109,7 +181,12 @@ INSERT INTO organizacao (organizacao_ID, nome_org, CEO)
    VALUES (2, 'Gamers Club', 'Yuri Cerezo Uchiyama');
 INSERT INTO organizacao (organizacao_ID, nome_org, CEO)
    VALUES (3, 'BENQ', 'Conway Lee');
-
+INSERT INTO organizacao (organizacao_ID, nome_org, CEO)
+   VALUES (4, 'Flamengo', 'Reinaldo Belotti');
+INSERT INTO organizacao (organizacao_ID, nome_org, CEO)
+   VALUES (5, 'Mastercard', 'Ajaypal Singh Banga');
+INSERT INTO organizacao (organizacao_ID, nome_org, CEO)
+   VALUES (6, 'Corsair', 'Andy Paul');
 
 /*PERTENCE*/
 
@@ -143,7 +220,35 @@ INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
    VALUES (22, 2);
 INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
    VALUES (22, 3); 
-   
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (9, 4);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (9, 5);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (10, 4);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (10, 5);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (10, 6);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (11, 6);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (11, 5);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (12, 5);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (12, 4);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (13, 6);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (14, 4);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (22, 4);
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (22, 5); 
+INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
+   VALUES (22, 6); 
+
 /*PROJETO*/
 
 INSERT INTO projeto (projeto_user_id, nome_projeto)
@@ -166,3 +271,17 @@ INSERT INTO projeto (projeto_user_id, nome_projeto)
    VALUES (6, 'HAND TORN');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
    VALUES (7, 'TESTE');
+INSERT INTO projeto (projeto_user_id, nome_projeto)
+   VALUES (3, 'Dream Chasers Fall Classic');
+INSERT INTO projeto (projeto_user_id, nome_projeto)
+   VALUES (3, 'Shore Through the Uprights Tournament');
+INSERT INTO projeto (projeto_user_id, nome_projeto)
+   VALUES (5, 'Beast of the East Tournament');
+INSERT INTO projeto (projeto_user_id, nome_projeto)
+   VALUES (5, 'Black Diamond  Tournament');
+INSERT INTO projeto (projeto_user_id, nome_projeto)
+   VALUES (7, 'Turkey Trot Sandlot Challenge');
+INSERT INTO projeto (projeto_user_id, nome_projeto)
+   VALUES (1, 'Labor Day Goal Tournament');
+INSERT INTO projeto (projeto_user_id, nome_projeto)
+   VALUES (2, 'Shore Football Elite Tournament');   

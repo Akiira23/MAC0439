@@ -17,3 +17,11 @@ WHERE aposta_finalizada = TRUE;
 /*Remove um usuario dado sua senha*/
 DELETE FROM usuario
 WHERE user_id = 22 AND senha = 'GqnQzTjAPb';
+
+/*Limpa todas as tabelas*/
+DELETE FROM aposta;
+DELETE FROM organizacao;
+DELETE FROM pertence;
+DELETE FROM projeto;
+DELETE FROM usuario;
+DELETE FROM usuario_premium;

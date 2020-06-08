@@ -13,16 +13,30 @@ UPDATE organizacao
 	WHERE nome_org = 'BENQ';
    
 /*atualiza o saldo de todos os usuario se suas apostas estiverem 
-finalizadas mas seus saldos ainda nao foram atualizados*/   
+finalizadas mas seus saldos ainda nao foram atualizados e depois 
+atualiza todas as apostas que ja atualizaram o saldo*/   
+
 UPDATE usuario
 	SET saldo = a.odd * a.valor + saldo
 	FROM aposta a
 	WHERE user_id = a.id_usuario_aposta AND a.venceu_aposta = TRUE AND a.aposta_finalizada = FALSE;
 
-/*Atualiza todas as apostas que ja atualizaram o saldo*/
 UPDATE aposta
 	SET aposta_finalizada = TRUE
 	WHERE venceu_aposta IS NOT null AND aposta_finalizada = FALSE;
+   
+/*atualiza o saldo de uma aposta especifica se ela estiver
+finalizada mas o saldo ainda nao foi atualizado e depois 
+atualiza ela para as que ja atualizaram o saldo*/  
+
+UPDATE usuario
+	SET saldo = a.odd * a.valor + saldo
+	FROM aposta a
+	WHERE user_id = a.id_usuario_aposta AND a.venceu_aposta = TRUE AND a.aposta_finalizada = FALSE AND a.aposta_id = 2;
+
+UPDATE aposta
+	SET aposta_finalizada = TRUE
+	WHERE venceu_aposta IS NOT null AND aposta_finalizada = FALSE AND aposta_id = 2;  
    
 /*Atualiza uma aposta especifica*/   
 UPDATE aposta
