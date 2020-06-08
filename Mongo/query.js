@@ -19,4 +19,4 @@ db.torneios.find({"esporte":"overwatch"},{"imagens":1, "_id":0}).sort({esporte:1
 // encontra os jogadores de mais de 40 anos que ja ganharam uma partida
 
 
-// encontra todos os jogadores que ja jogaram em uma partida de mais de 2h
+// encontra todos os jogadores que ja jogaram em uma partida de mais de 3h
