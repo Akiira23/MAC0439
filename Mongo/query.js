@@ -14,6 +14,15 @@ db.partidas.aggregate([
     ]);
 
 // encontra os times que venceram pelo menos uma partida em um torneio dado
+db.torneios.aggregate([
+    {$match: {nome: "Exploding EVO"}},
+    {$unwind: {path: "$partidas",}},
+    {$project: {"partidas.times": 1, placar_str: {$split: ["$partidas.placar", "-"]}}},
+    {$project: {time_1: {$arrayElemAt: ["$partidas.times", 0]}, time_2: {$arrayElemAt: ["$partidas.times", 1]}, pontos_1: {$arrayElemAt: ["$placar_str", 0]}, pontos_2: {$arrayElemAt: ["$placar_str", 1]}}},
+    {$project: {resp: {$gt: ["$pontos_1", "$pontos_2"]}, nome_time_1: "$time_1.nome", nome_time_2: "$time_2.nome", _id: 0}},
+    {$project: {time: {$cond: {if: {$eq: ["$resp", true]}, then: {time: "$nome_time_1"}, else: {time: "$nome_time_2"}}}}},
+    {$project: {time_vitorioso: "$time.time"}}
+]);
 
 
 // encontra todos os jogadores que ja jogaram em uma partida de mais de 2h30m OK
