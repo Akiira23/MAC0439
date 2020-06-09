@@ -114,3 +114,9 @@ CREATE
   (user_18)-[:SENDS]->(msg_9)-[:SENT_IN]->(chat_1),
   (user_20)-[:SENDS]->(msg_10)-[:SENT_IN]->(chat_2)
 
+CREATE
+  (user_8) -[:IS_FRIEND]-> (user_10),
+  (user_10) -[:IS_FRIEND]-> (user_8),
+  (user_4) -[:IS_FRIEND]-> (user_11),
+  (user_11) -[:IS_FRIEND]-> (user_4)
+  (user_16) -[:IS_FRIEND]-> (user_20)
