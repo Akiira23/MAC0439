@@ -13,7 +13,7 @@ db.partidas.aggregate([
     {$project: {resp: 0}},
     ]);
 
-// encontra os times que venceram pelo menos uma partida em um torneio dado
+// encontra os times que venceram pelo menos uma partida em um torneio dado OK
 db.torneios.aggregate([
     {$match: {nome: "Exploding EVO"}},
     {$unwind: {path: "$partidas",}},
