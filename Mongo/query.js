@@ -20,10 +20,7 @@ db.partidas.find({"duracao": /^0h|^1h[0-1][0-9]m/i},{"duracao":1,"times.treinado
 //db.partidas.find({"times.participantes": {$elemMatch: {"idade":40}},{"duracao":1,"times.participantes.nome":1, "times.participantes.idade":1, "_id":0}).sort({duracao:1}).pretty();
 //db.jogadores.find({"idade": {$gte:40}},{"idade":1,"times.participantes":1, "_id":0}).sort({duracao:1}).pretty();
 
-<<<<<<< HEAD
 // encontra todos os jogadores que ja jogaram em uma partida de mais de 2h OK
 db.partidas.find({"duracao":/^[2-9]/i},{"duracao":1,"times.participantes":1, "_id":0}).sort({duracao:1}).pretty();
-=======
 
 // encontra todos os jogadores que ja jogaram em uma partida de mais de 3h
->>>>>>> 2a2bd71646a86e023d431bce9d612b2374aedbc4
