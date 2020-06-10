@@ -1,3 +1,7 @@
+// Aqui não usamos mais a tabela de participantes, pois estes estão agregados dentro da tabela de partidas
+
+// Vale também mencionar que abrimos mão do objeto de Projetos, pois o intuito de uso deles não estava muito claro, assim
+// como seu uso não parecer essencial para as funcionalidades da ferramenta
 use FantasyDreams;
 DBQuery.shellBatchSize = 400;
 db.torneios.insertMany(

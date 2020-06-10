@@ -1,3 +1,4 @@
+// Aqui não usamos mais a tabela de esportes, pois será referenciado no objeto de torneio
 use FantasyDreams;
 DBQuery.shellBatchSize = 400;
 db.jogadores.insertMany(
