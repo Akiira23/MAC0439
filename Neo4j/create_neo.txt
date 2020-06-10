@@ -1,1 +1,0 @@
-CREATE (user_1:User {id:'The Matrix', name:1999, tagline:'Welcome to the Real World'})
