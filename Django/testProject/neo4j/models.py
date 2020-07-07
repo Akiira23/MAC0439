@@ -1,5 +1,5 @@
 from django.db import models
-from py2neo import Graph, Node, Relationship
+from py2neo import Graph, Node, Relationship, Database
 
 
 g = Graph(uri="bolt://localhost:7687", password="123", name="Chat")
@@ -18,15 +18,16 @@ class User(models.Model):
     # sexo = models.CharField(max_length=1)
 
     def find(username):
-        user = g.nodes.match("User", nome = username).first()
-        # user = g.nodes.match("User", name=username)
-        return user
+        # print("MATCH (e:User) WHERE e.nome = '{}' RETURN e".format(username))
+        for a in g.run("MATCH (e:User) WHERE e.nome = '{}' RETURN e".format(username)):
+            print("A"*40)
+            return True
+        return False
 
     def register(self, username, email):
-        print("A"*40)
         if not User.find(username):
             
-            user = Node("User", username=username, email=email)
+            user = Node("User", nome=username, email=email)
             tx = g.begin()
             tx.create(user)
             tx.commit()

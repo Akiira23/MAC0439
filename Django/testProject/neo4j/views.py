@@ -14,7 +14,7 @@ def index(request):
 
 def register(request):
     u = User()
-    u.register("Douglas", "email")
+    u.register("Dobberson", "email")
     user_nodes = g.nodes.match("User")
     context = {'user_list': user_nodes}
     return render(request, 'neo4j/index.html', context)
