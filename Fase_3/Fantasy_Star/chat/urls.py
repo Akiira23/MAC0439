@@ -8,4 +8,5 @@ app_name = 'chat'
 urlpatterns = [
     path('', views.index, name='index'),
     path('register/', views.register, name='register'),
+    path('friend/', views.friend, name='friend'),
 ]
