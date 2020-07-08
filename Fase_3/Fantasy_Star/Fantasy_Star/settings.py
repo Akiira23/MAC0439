@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chat.apps.Neo4JConfig',
     'aposta.apps.ApostaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,9 +80,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'FantasyStar',
         'USER': 'postgres',
-        'PASSWORD': '123',
+        'PASSWORD': 'ri19981234',
         'HOST': 'localhost',
         'PORT': '5432',
+    },
+
+    'neo4j' : {
+        'HOST':'localhost',
+        'NAME':'Chat',
+        'PASSWORD':'123',
+        'PORT':7687,
+        'ENDPOINT':'/db/data'
     }
 }
 
