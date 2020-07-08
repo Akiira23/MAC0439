@@ -5,10 +5,45 @@
 {% if latest_aposta_list %}
     <ul>
         {% for aposta in latest_aposta_list %}
-            <li><a href="{% url 'aposta:detail' aposta.aposta_id %}">R$ {{ aposta.valor }} - {{aposta.data_hora}} - {{ aposta.id_usuario_aposta.nome }}</a></li>
+            <li><a href="{% url 'aposta:detail' aposta.aposta_id %}"> {{ aposta.id_usuario_aposta.nome }} - {{aposta.data_hora}} </a></li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No bets are available.</p>
 {% endif %}
 
+<h1>Organizações</h1>
+{% if org_list %}
+    <ul>
+        {% for org in org_list %}
+            <li><a href="{% url 'aposta:membros' org.organizacao_id %}"> {{ org.nome_org }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No bets are available.</p>
+{% endif %}
+
+<h1>Pesquisas nas apostas</h1>
+
+<form action="{% url 'aposta:search'%}" method="post">
+    {% csrf_token %}
+    <label>Valor da aposta:</label>
+    <select name="valor" id="valor">
+        <option selected="selected" >Selecionar</option>
+        {% for aposta in all_valor %}
+            <option> {{aposta.valor}} </option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <label>Nome do time:</label>
+    <select name="times" id="times">
+        <option selected="selected" >Selecionar</option>
+        {% for aposta in all_times %}
+            <option> {{aposta.aposta_vencedor}} </option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <input type="submit">
+</form>

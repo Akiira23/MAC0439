@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
+
+{% if aposta_filter %}
+    <ul>
+        {% for aposta in aposta_filter %}
+            
+            <li> Nome: {{ aposta.id_usuario_aposta.nome }} - Venceu: {{aposta.venceu_aposta}} - Valor = {{aposta.valor}} - Odd: {{aposta.odd}} </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No bets are available.</p>
+{% endif %}
+<a href="{% url 'aposta:index' %}"> Voltar </a>

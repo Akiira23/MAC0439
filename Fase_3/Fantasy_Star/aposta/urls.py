@@ -7,4 +7,6 @@ urlpatterns = [
     path('<int:id_aposta>/', views.detail, name='detail'),
     path('<int:id_aposta>/results/', views.results, name='results'),
     path('<int:id_aposta>/make/', views.make, name='make'),
+    path('<int:id_org>/membros/', views.membros, name='membros'),
+    path('search/', views.search, name='search'),
 ]
