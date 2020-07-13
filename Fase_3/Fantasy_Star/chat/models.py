@@ -1,6 +1,7 @@
 from django.db import models
 from py2neo import Graph, Node, Relationship, Database
 from py2neo.ogm import GraphObject
+from datetime import datetime
 # from neomodel import db
 # from neomodel import (config, StructuredNode, StringProperty, IntegerProperty,UniqueIdProperty, RelationshipTo)
 
@@ -23,8 +24,8 @@ g = Graph(uri="bolt://localhost:7687", password="123", name="Chat")
 class User(models.Model):
     # app_label = "User"
     user_id = models.IntegerField(primary_key=True)
-    email = models.CharField(max_length=60)
-    nome = models.CharField(unique=True, max_length=80)
+    # email = models.CharField(max_length=60)
+    # nome = models.CharField(unique=True, max_length=80)
     # tel_ddd = models.SmallIntegerField()
     # tel_numero = models.IntegerField()
     # cpf = models.CharField(max_length=11)
@@ -34,9 +35,9 @@ class User(models.Model):
 
     def find(username):
         # print("MATCH (e:User) WHERE e.nome = '{}' RETURN e".format(username))
-        for a in g.run("MATCH (e:User) WHERE e.nome = '{}' RETURN e".format(username)):
-            print("A"*40)
-            return True
+        for u, in g.run("MATCH (e:User) WHERE e.nome = '{}' RETURN e".format(username)):
+            print("achei user", u["nome"])
+            return u
         return False
 
     def register(self, username, email):
@@ -49,15 +50,20 @@ class User(models.Model):
         return False
     
     def friend(nome1, nome2):
-        for u1 in g.run("MATCH (e:User) WHERE e.nome = '{}' RETURN e".format(nome1)):
-            for u2 in g.run("MATCH (e:User) WHERE e.nome = '{}' RETURN e".format(nome2)):
-                tx = g.begin()
-                # print(u1["e"]["nome"])
-                # print(u2["e"]["nome"])
-                f = Relationship(u1, "FRIENDS_WITH", u2)
-                tx.create(f)
-                tx.commit()
-                return True
+        # virgula da o unpack na tupla de um unico valor
+        u1 = User.find(nome1)
+        u2 = User.find(nome2)
+        if u1 and u2:
+            tx = g.begin()
+            print("here come the names")
+            print(u1)
+            print(u2)
+            f1 = Relationship(u1, "FRIENDS_WITH", u2)
+            f2 = Relationship(u2, "FRIENDS_WITH", u1)
+            tx.create(f1)
+            tx.create(f2)
+            tx.commit()
+            return f1, f2
         return False
 
     class Meta:
@@ -65,15 +71,27 @@ class User(models.Model):
         db_table = 'user'
 
 class Message(models.Model):
-    message_id = models.IntegerField(primary_key=True)
-    conteudo = models.CharField(max_length=1000)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    def send(username, chatname, content):
+        c = Chat.find(chatname)
+        u = User.find(username)
+        if c and u:
+            tx = g.begin()
+            m = Node("Message", conteudo=content, timestamp=datetime.now())
+            e1 = Relationship(u, "SENT", m)
+            e2 = Relationship(m, "SENT_IN", c)
+            tx.create(m)
+            tx.create(e1)
+            tx.create(e2)
+            tx.commit()
+            return m
+        return False
 
-    #wip
-    def send(self, user_id, chat_id, content):
-        for c in g.run("MATCH (c:Chat) WHERE c.id = '{}' RETURN e".format(chat_id)):
-            return
-
+    def get_chat_messages(chatname):
+        messages = []
+        query = "MATCH (u:User)-[:SENT]->(m:Message)-[:SENT_IN]->(c:Chat) WHERE c.nome = '{}' RETURN u, m"
+        for u, m in g.run(query.format(chatname)):
+            messages.append({"user":u, "message":m})
+        return messages
 
     class Meta:
         managed = True
@@ -81,12 +99,49 @@ class Message(models.Model):
 
 
 class Chat(models.Model):
+    def find(chatname):
+        for c, in g.run("MATCH (n:Chat) WHERE n.nome = '{}' RETURN n".format(chatname)):
+            print("achei chat", c["name"])
+            return c
+        return False
+    
+    def register(chatname):
+        if not Chat.find(chatname):
+            chat = Node("Chat", nome=chatname)
+            tx = g.begin()
+            tx.create(chat)
+            tx.commit()
+            return chat
+        return False
+        
 
-    class Meta:
-        managed = True
-        db_table = 'chats'
+    def include_user(username, chatname):
+        u = User.find(username)
+        c = Chat.find(chatname)
+        if u and c and not Chat.user_participates(username, chatname):
+            tx = g.begin()
+            part = Relationship(u, "PARTICIPATES_IN", c)
+            tx.create(part)
+            tx.commit()
+            return part
+        return False
 
-class Chat(models.Model):
+    def user_participates(username, chatname):
+        query = "MATCH (u:User)-[:PARTICIPATES_IN]->(c:Chat) where u.nome = '{}' and c.nome = '{}' RETURN u"
+        for u, in g.run(query.format(username, chatname)):
+            return u
+        return False
+
+    def get_participants(chatname):
+        query = "MATCH (u:User)-[:PARTICIPATES_IN]->(c:Chat) where c.nome = '{}' RETURN u"
+        user_list = []
+        print("participantes")
+        for u, in g.run(query.format(chatname)):
+            print(u)
+            user_list.append(u)
+        return user_list
+
+
     class Meta:
         managed = True
         db_table = 'chats'

@@ -4,10 +4,10 @@
 <h1>{{title}}</h1>
 {% if list %}
     <div>
-        {% for user in list %}
-            {{ user.nome }} - {{ user.email }}</br>
+        {% for user_msg in list %}
+            {{ user_msg.message.timestamp }} - {{ user_msg.user.nome }} - {{ user_msg.message.conteudo }}</br>
         {% endfor %}
     </div>
 {% else %}
-    <p>Sem usuários por aqui.</p>
+    <p>Sem mensagens por aqui.</p>
 {% endif %}
