@@ -29,7 +29,6 @@ def lista(request):
     test_cursor = collection.find({})
     resposta_lista = ""
     for document in test_cursor:
-        print("Mateus document in test_cursor: ", document)
         resposta_lista += str(document) + "<br>"
     return HttpResponse(resposta_lista)
 
