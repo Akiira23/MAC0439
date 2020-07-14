@@ -1,0 +1,39 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
+<h1>Criar Aposta</h1>
+<form action="{% url 'aposta:make_user' %}" method="post">
+    {% csrf_token %}
+    <label><span style="padding-right:39px"><b> ID aposta: </b></span></label>
+    <input type="text" name="aposta_id" id="aposta_id" value={{qtd_aposta.aposta_id__count}}><br>
+
+    <label><b> Valor da aposta: </b></label>
+    <input type="text" name="valor" id="valor"><br>
+
+    <label><span style="padding-right:70px"><b>Time: </b></span></label>
+    <select name="time" id="time">
+        {% for t in times %}
+            <option> {{t.aposta_vencedor}} </option>
+        {% endfor %}
+    </select>
+    <br>
+    <label><span style="padding-right:74px"><b> Odd: </b></span></label>
+    <input type="text" name="odd" id="odd"><br>
+
+    <label><span style="padding-right:25px"><b> Data e hora: </b></span></label>
+    <input type="datetime-local" name="date_time" id="date_time"><br>
+
+    <label><span style="padding-right:30px"><b> Torneio ID: </b></span></label>
+    <input type="text" name="tid" id="tid" value="{{torneio_id}}" readonly="readonly"><br>
+
+    <label><span style="padding-right:31px"><b> Partida ID: </b></span></label>
+    <input type="text" name="pid" id="pid" value="{{partida_id}}" readonly="readonly"><br>
+
+    <label><span style="padding-right:22px"><b>Usuarios ID: </b></span></label>
+    <select name="time" id="time">
+        {% for u in users %}
+            <option> {{u.user_id}} </option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <input type="submit" value="Novo usuario">
+</form>

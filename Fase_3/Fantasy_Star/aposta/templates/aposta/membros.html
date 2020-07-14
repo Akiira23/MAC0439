@@ -6,7 +6,7 @@
 <ul>
     <li>{{ org.ceo }}</li>
 </ul>
-<h2>Membros</h2>
+<h2>Membros ({{n_membros}})</h2>
 <ul>
     {% for p in pertence_list %}
         {% if p.userorg_id == org.organizacao_id%}

@@ -1,0 +1,37 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
+
+<h1>Torneio ID {{a}} </h1>
+    <h2>Times do Torneio</h2>
+    <ul>
+        {% for t in times %}
+            <li> {{ t.aposta_vencedor }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2>Dados das Apostas do Torneio</h2>
+    <ul>
+        <li>Odd maxima: {{odd_max.odd__max}}</li>
+        <li>Odd minima: {{odd_min.odd__min}}</li>
+        <li>Media apostada: R$ {{mean_bet.valor__avg}}</li>
+        <li>Numero de apostas totais: {{qtd_bets.aposta_id__count}}</li>
+        <li>Valor total de apostas: R$ {{sum_bet.valor__sum}}</li>
+    </ul>
+    <hr>
+    <form action="{% url 'aposta:insert_aposta'%}" method="post">
+        {% csrf_token %}
+        <label><span style="padding-right:26px"> Torneio ID: </span></label>
+        <input type="text" name="tid" id="tid" value="{{a}}" readonly="readonly"><br>
+
+        <label>ID das partidas:</label>
+        <select name="pid" id="pid">
+            {% for ids in partidas %}
+                <option> {{ids.partida_id}} </option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Criar nova aposta">
+    </form>
+    
+<a href="{% url 'aposta:index' %}"> Voltar </a>

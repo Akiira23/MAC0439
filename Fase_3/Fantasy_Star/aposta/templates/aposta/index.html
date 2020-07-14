@@ -12,6 +12,21 @@
     <p>No bets are available.</p>
 {% endif %}
 
+<h1>Apostas dos Usuarios</h1>
+<form action="{% url 'aposta:search_user'%}" method="post">
+    {% csrf_token %}
+    <label>Nome do usuario:</label>
+    <select name="user" id="user">
+        <option selected="selected"> Selecionar </option>
+        {% for u in users %}
+            <option>{{u.nome}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Pesquisar apostas">
+</form>
+
 <h1>Organizações</h1>
 {% if org_list %}
     <ul>
@@ -45,5 +60,23 @@
     </select>
     <br>
     <br>
-    <input type="submit">
+    <input type="submit" value="Pesquisar apostas">
 </form>
+
+<h1>Dados dos torneios/Novas Apostas</h1>
+
+<form action="{% url 'aposta:search_torneio'%}" method="post">
+    {% csrf_token %}
+    <label>ID do torneio:</label>
+    <select name="torneio" id="torneio">
+        <option selected="selected" >Selecionar</option>
+        {% for ids in torn_id %}
+            <option> {{ids.torneio_id}} </option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Pesquisar dados">
+</form>
+
+<a href="{% url 'aposta:insert_user' %}"> Criar usuario </a>

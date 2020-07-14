@@ -18,23 +18,4 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'aposta:make' aposta.aposta_id %}" method="post">
-    {% csrf_token %}
-    <label><span style="padding-right:63px"><b> Valor: </b></span></label>
-    <input type="text" name="valor" value="0"><br>
-
-    <label><b> Time Apostado: </b></label>
-    <input type="text" name="time" value="{{ aposta.aposta_vencedor }}"><br>
-
-    <label><span style="padding-right:33px"><b> partida_id: </b></span></label>
-    <input type="text" name="partida_id" value="{{ aposta.partida_id }}"><br>
-
-    <label><span style="padding-right:33px"><b> torneio_id: </b></span></label>
-    <input type="text" name="torneio_id" value="{{ aposta.torneio_id }}"><br>
-
-    <label><span style="padding-right:35px"><b> id usuario: </b></span></label>
-    <input type="text" name="id_usuario" value="{{ aposta.id_usuario_aposta.user_id }}"><br>
-
-    <input type="submit" value="Nova aposta">
-</form>
 <a href="{% url 'aposta:index' %}"> Voltar </a>

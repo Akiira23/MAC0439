@@ -1,11 +1,34 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
 
+<script type="text/javascript">
+    function mul(x, y) {
+        return x*y;
+    }
+</script>
+
+{% if a != "Selecionar" and b != "Selecionar" %}
+    <h1> Valor: {{a}} | Time: {{b}} </h1>
+{% elif a != "Selecionar" %}
+    <h1> Valor: {{a}} </h1>
+{% else %}
+    <h1> Time: {{b}} </h1>
+{% endif %}
+
 {% if aposta_filter %}
     <ul>
         {% for aposta in aposta_filter %}
-            
-            <li> Nome: {{ aposta.id_usuario_aposta.nome }} - Venceu: {{aposta.venceu_aposta}} - Valor = {{aposta.valor}} - Odd: {{aposta.odd}} </li>
+            <li> Nome: {{ aposta.id_usuario_aposta.nome }}</li>
+            <li> Time apostado: {{ aposta.aposta_vencedor }}</li>
+            <li> Venceu: {{aposta.venceu_aposta}}</li>
+            <li> Valor: {{aposta.valor}}</li>
+            <li> Odd: {{aposta.odd}} </li>
+            {% if aposta.venceu_aposta %}
+                <li> Ganho: <script type="text/javascript">document.write(mul({{aposta.valor}},{{aposta.odd}}))</script> </li>
+            {% else %}
+                <li> Ganho: 0</li>
+            {% endif %}
+            <hr>
         {% endfor %}
     </ul>
 {% else %}

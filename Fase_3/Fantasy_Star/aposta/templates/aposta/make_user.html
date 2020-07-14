@@ -1,0 +1,19 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
+<h1>Usuario Criado Com Sucesso</h1>
+<ul>
+{% for u in u_create %}
+
+    <li> Nome: {{u.nome}} </li>
+    <li> DDD: {{u.tel_ddd}}</li>
+    <li> Telefone: {{u.tel_numero}} </li>
+    <li> CPF: {{u.cpf}} </li>
+    <li> Saldo: {{u.saldo}} </li>
+    <li> Senha: {{u.senha}} </li>
+    <li> E-mail: {{u.email}} </li>
+    <li> Nome: {{u.nome}} </li>
+    <li> Sexo: {{u.sexo}} </li>
+
+{% endfor %}
+</ul>
+<a href="{% url 'aposta:index' %}"> Voltar </a>

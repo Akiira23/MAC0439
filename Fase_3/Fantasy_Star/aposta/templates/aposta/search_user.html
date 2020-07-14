@@ -1,0 +1,37 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
+
+{% for us in id_u %}
+    <h1>Nome: {{ us.nome }}</h1>
+{% endfor %}
+<h2>Dados</h2>
+<ul>
+{% for us in id_u %}
+    <li>ID: {{ us.user_id }}</li>
+    <li>DDD: {{ us.tel_ddd }}</li>
+    <li>Numero: {{ us.tel_numero }}</li>
+    <li>CPF: {{ us.cpf }}</li>
+    <li>Saldo: {{ us.saldo }}</li>
+    <li>Senha: {{ us.senha }}</li>
+    <li>E-mail: {{ us.email }}</li>
+    <li>Sexo: {{ us.sexo }}</li>
+{% endfor %}
+</ul>
+<h2>Apostas</h2>
+<ul>
+{% for us in id_u %}
+    {% for aposta in aposta_filter %}
+        {% if us.user_id == aposta.id_usuario_aposta.user_id %}
+            <li> Time apostado: {{aposta.aposta_vencedor}} </li>
+            <li> Data e Hora: {{aposta.data_hora}}</li>
+            <li> Venceu: {{aposta.venceu_aposta}} </li>
+            <li> Valor: {{aposta.valor}} </li>
+            <li> Odd: {{aposta.odd}} </li>
+            <li> Venceu a aposta: {{aposta.venceu_aposta}} </li>
+            <li> Aposta finalizada: {{aposta.aposta_finalizada}} </li>
+            <hr>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</ul>
+<a href="{% url 'aposta:index' %}"> Voltar </a>
