@@ -9,7 +9,7 @@ connection = pymongo.MongoClient("localhost", 27017)
 # GET DATABASE
 database = connection['FantasyDreamsMongo']
 # GET COLLECTION
-collection = database['esportes']
+collection = database['jogadores']
 
 
 def get_single_data(document_id):
@@ -22,7 +22,7 @@ def get_single_data(document_id):
     return data
 
 def index(request):
-    resposta_simples = "<h1>Test MongoDB connection! ESPORTES!</h1>"
+    resposta_simples = "<h1>Test MongoDB connection! JOGADORES!</h1>"
     return HttpResponse(resposta_simples)
 
 def lista(request):
