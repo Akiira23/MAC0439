@@ -82,6 +82,15 @@ DATABASES = {
         'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '5432',
+    },
+
+    'mongoDB': {
+        'ENGINE': 'djongo',
+        'NAME': 'FantasyStarMongo',
+        'USER': 'mongo',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '27017',
     }
 }
 
