@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
+
+<h1>{{title}}</h1>
+{% if list %}
+    <div>
+        {% for chat in list %}
+            {{ chat.nome }}</br>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Sem chats por aqui.</p>
+{% endif %}

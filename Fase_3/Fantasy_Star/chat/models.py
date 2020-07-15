@@ -23,7 +23,7 @@ g = Graph(uri="bolt://localhost:7687", password="123", name="Chat")
 
 class User(models.Model):
     # app_label = "User"
-    user_id = models.IntegerField(primary_key=True)
+    # user_id = models.IntegerField(primary_key=True)
     # email = models.CharField(max_length=60)
     # nome = models.CharField(unique=True, max_length=80)
     # tel_ddd = models.SmallIntegerField()
@@ -113,7 +113,6 @@ class Chat(models.Model):
             tx.commit()
             return chat
         return False
-        
 
     def include_user(username, chatname):
         u = User.find(username)

@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('register/', views.register_user, name='register_user'),
     path('friend/', views.friend, name='friend'),
+    path('chats/', views.chats_index, name='chats_index'),
     path('chats/register', views.register_chat, name='register_chat'),
     path('chats/participants', views.chat_participants, name='chat_participants'),
     path('chats/send_msg', views.send_message, name='send_message'),
