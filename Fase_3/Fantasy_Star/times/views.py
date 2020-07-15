@@ -26,12 +26,12 @@ def index(request):
     return HttpResponse(resposta_simples)
 
 def lista(request):
-    seleciona_time("Punk Limestones")
-    test_cursor = collection.find({})
-    resposta_lista = ""
+    test_cursor = collection.find()
+    resposta_lista = []
+
     for document in test_cursor:
-        resposta_lista += str(document["nome"]) + str(document["treinador"]) + "<br>"
-    return HttpResponse(resposta_lista)
+        resposta_lista.append(document)
+    return render(request, "times/lista.html", {'dados': resposta_lista})
 
 def seleciona_time(nome_do_time):
     test_cursor = collection.find({"nome": nome_do_time})

@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 import pymongo
+from django.shortcuts import get_object_or_404, render
 from bson import ObjectId
 
 
@@ -26,10 +27,10 @@ def index(request):
     return HttpResponse(resposta_simples)
 
 def lista(request):
-    test_cursor = collection.find({})
-    resposta_lista = ""
-    for document in test_cursor:
-        resposta_lista += str(document) + "<br>"
-    return HttpResponse(resposta_lista)
+    test_cursor = collection.find()
+    resposta_lista = []
 
+    for document in test_cursor:
+        resposta_lista.append(document)
+    return render(request, "partidas/lista.html", {'dados': resposta_lista})
 

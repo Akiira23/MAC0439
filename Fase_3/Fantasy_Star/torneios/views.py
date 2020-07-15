@@ -26,10 +26,11 @@ def index(request):
     return HttpResponse(resposta_simples)
 
 def lista(request):
-    test_cursor = collection.find({})
-    resposta_lista = ""
+    test_cursor = collection.find()
+    resposta_lista = []
+
     for document in test_cursor:
-        resposta_lista += str(document) + "<br>"
-    return HttpResponse(resposta_lista)
+        resposta_lista.append(document)
+    return render(request, "torneios/lista.html", {'dados': resposta_lista})
 
 
