@@ -4,7 +4,7 @@
 <form action="{% url 'aposta:make_user' %}" method="post">
     {% csrf_token %}
     <label><span style="padding-right:39px"><b> ID: </b></span></label>
-    <input type="text" name="user_id" id="user_id" value={{qtd_user.user_id__count}}><br>
+    <input type="text" name="user_id" id="user_id" value={{qtd_user.user_id__count}} readonly="readonly"><br>
 
     <label><span style="padding-right:23px"><b> DDD: </b></span></label>
     <input type="text" name="ddd" id="ddd"><br>

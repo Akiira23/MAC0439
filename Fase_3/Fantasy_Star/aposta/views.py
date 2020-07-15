@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Aposta, Organizacao, Pertence, Usuario
+from .models import Aposta, Organizacao, Pertence, Usuario, UsuarioPremium, Projeto
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.db.models import Max, Min, Avg, Count, Sum
@@ -23,7 +23,8 @@ def membros(request, id_org):
     pertence_list = Pertence.objects.order_by('userpremium_id')
     n_membros = Pertence.objects.filter(userorg_id = org.organizacao_id).count()
     usu = Usuario.objects.order_by('user_id')
-    return render(request, 'aposta/membros.html', {'org': org, 'pertence_list':pertence_list, 'usu': usu, 'n_membros': n_membros})
+    return render(request, 'aposta/membros.html', {'org': org, 'pertence_list':pertence_list, 
+                    'usu': usu, 'n_membros': n_membros})
 
 def search(request):
     a = request.POST['valor']
@@ -42,10 +43,15 @@ def search_user(request):
     a = request.POST['user']
     if a != "Selecionar":
         id_u = Usuario.objects.all().filter(nome = a)
+        for u in id_u:
+            u_premium = UsuarioPremium.objects.all().filter(premium = u.user_id)
+            projetos = Projeto.objects.all().filter(projeto_user = u.user_id)
+            n_projetos = Projeto.objects.all().filter(projeto_user = u.user_id).count()
         aposta_filter = Aposta.objects.order_by('aposta_id')
     else:
         return HttpResponse("Its not posible.")
-    return render(request, 'aposta/search_user.html', {'aposta_filter': aposta_filter, 'id_u': id_u})
+    return render(request, 'aposta/search_user.html', {'aposta_filter': aposta_filter, 'id_u': id_u, 
+                    'u_premium': u_premium, 'projetos': projetos, 'n_projetos': n_projetos})
 
 def search_torneio(request):
     a = request.POST['torneio']
@@ -65,6 +71,7 @@ def search_torneio(request):
 
 def insert_user(request):
     qtd_user = Usuario.objects.aggregate(Count('user_id'))
+    qtd_user['user_id__count'] += 1
     sexo = Usuario.objects.values('sexo').distinct()
     return render(request, 'aposta/insert_user.html', {'qtd_user': qtd_user, 'sexo': sexo})
 
@@ -89,6 +96,24 @@ def insert_aposta(request):
     partida_id = request.POST['pid']
     times = Aposta.objects.values('aposta_vencedor').distinct().filter(torneio_id = torneio_id, partida_id = partida_id)
     qtd_aposta = Aposta.objects.aggregate(Count('aposta_id'))
+    qtd_aposta['aposta_id__count'] += 1
     users = Usuario.objects.values('user_id')
     return render(request, 'aposta/insert_aposta.html', {'torneio_id': torneio_id, 'partida_id': partida_id, 
                     'times': times, 'qtd_aposta': qtd_aposta, 'users': users})
+
+def make_aposta(request):
+    id = request.POST['aposta_id']
+    valor = request.POST['valor']
+    time = request.POST['time']
+    odd = request.POST['odd']
+    data_hora = request.POST['date_time']
+    tid = request.POST['tid']
+    pid = request.POST['pid']
+    uid = request.POST['uid']
+    u = Usuario.objects.get(pk=uid)
+    a = Aposta(aposta_id = id, valor = valor, aposta_vencedor = time, 
+        odd = odd, data_hora = data_hora, partida_id = pid, 
+        torneio_id = tid, id_usuario_aposta = u)
+    a.save()
+    a_create = Aposta.objects.filter(aposta_id = id)
+    return render(request, 'aposta/make_aposta.html', {'a_create': a_create})

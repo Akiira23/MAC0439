@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
+<h1>Aposta Criada Com Sucesso</h1>
+
+<ul>    
+{% for a in a_create %}
+
+    <li> Aposta ID: {{a.aposta_id}} </li>
+    <li> Nome: {{a.id_usuario_aposta.nome}} </li>
+    <li> Venceu aposta: {{a.venceu_aposta}}</li>
+    <li> Valor: R$ {{a.valor}} </li>
+    <li> Time apostado: {{a.aposta_vencedor}} </li>
+    <li> Odd: {{a.odd}} </li>
+    <li> Data e Hora: {{a.data_hora}} </li>
+    <li> Torneio ID: {{a.torneio_id}} </li>
+    <li> Partida ID: {{a.partida_id}} </li>
+    <li> Aposta finalizada: {{a.aposta_finalizada}} </li>
+
+{% endfor %}
+</ul>
+<a href="{% url 'aposta:index' %}"> Voltar </a>

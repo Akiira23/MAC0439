@@ -4,6 +4,9 @@
 {% for us in id_u %}
     <h1>Nome: {{ us.nome }}</h1>
 {% endfor %}
+{% if u_premium %}
+    <h1 style="color:blue;"> PREMIUM </h1>
+{% endif %}
 <h2>Dados</h2>
 <ul>
 {% for us in id_u %}
@@ -17,6 +20,7 @@
     <li>Sexo: {{ us.sexo }}</li>
 {% endfor %}
 </ul>
+<hr>
 <h2>Apostas</h2>
 <ul>
 {% for us in id_u %}
@@ -34,4 +38,13 @@
     {% endfor %}
 {% endfor %}
 </ul>
+{% if u_premium %}
+    <h2 style="color:blue;"> Projetos ({{n_projetos}}) </h2>
+    <ul>
+    {% for p in projetos %}
+        <li>{{p.nome_projeto}}</li>
+    {% endfor %}
+ </ul>
+{% endif %}
+<hr>
 <a href="{% url 'aposta:index' %}"> Voltar </a>

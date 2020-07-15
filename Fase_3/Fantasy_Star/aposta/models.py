@@ -73,7 +73,6 @@ class Usuario(models.Model):
 
 class UsuarioPremium(models.Model):
     premium = models.OneToOneField(Usuario, models.CASCADE, primary_key=True)
-    projeto_id = models.IntegerField(unique=True)
 
     class Meta:
         managed = True

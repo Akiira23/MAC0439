@@ -26,7 +26,7 @@
     <br>
     <input type="submit" value="Pesquisar apostas">
 </form>
-
+<a href="{% url 'aposta:insert_user' %}"> Criar usuario </a>
 <h1>Organizações</h1>
 {% if org_list %}
     <ul>
@@ -78,5 +78,3 @@
     <br>
     <input type="submit" value="Pesquisar dados">
 </form>
-
-<a href="{% url 'aposta:insert_user' %}"> Criar usuario </a>
