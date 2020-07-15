@@ -54,7 +54,7 @@ ORDER BY SUM(CASE WHEN venceu_aposta = TRUE THEN 1 ELSE 0 END) DESC;
 SELECT usuario.nome, COUNT(projeto.projeto_user_id) AS numero_de_projetos
 FROM usuario_premium 
 JOIN usuario ON usuario_premium.premium_id = usuario.user_id
-JOIN projeto ON usuario_premium.projeto_id = projeto.projeto_user_id
+JOIN projeto ON usuario_premium.premium_id = projeto.projeto_user_id
 GROUP BY usuario.nome
 ORDER BY COUNT(projeto.projeto_user_id) DESC;
 

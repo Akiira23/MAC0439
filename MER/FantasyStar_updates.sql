@@ -62,8 +62,3 @@ UPDATE usuario
 UPDATE usuario
 	SET tel_ddd = 19, tel_numero = 957891453
 	WHERE user_id = 4 AND senha = 'DeeI4R7bsQ';
- 
-/*Altera o nome do projeto*/  
-UPDATE projeto
-	SET nome_projeto = 'INTERCLASSES #1'
-	WHERE projeto_user_id = 7 AND nome_projeto = 'TESTE';

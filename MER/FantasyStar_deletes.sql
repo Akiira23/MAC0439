@@ -18,13 +18,13 @@ DELETE FROM projeto
 WHERE projeto_user_id IN (SELECT projeto.projeto_user_id FROM projeto 
 				JOIN usuario 
 				ON projeto.projeto_user_id = usuario.user_id 
-				WHERE projeto.projeto_user_id = 2 
+				WHERE projeto.projeto_user_id = 9 
 					AND projeto.nome_projeto = 'Vem no x1'
 					AND usuario.senha = 'PbhJytLJkC')
 AND nome_projeto IN (SELECT projeto.nome_projeto  FROM projeto 
 				JOIN usuario 
 				ON projeto.projeto_user_id = usuario.user_id 
-				WHERE projeto.projeto_user_id = 2
+				WHERE projeto.projeto_user_id = 9
 					AND projeto.nome_projeto = 'Vem no x1'
 					AND usuario.senha = 'PbhJytLJkC');
 
