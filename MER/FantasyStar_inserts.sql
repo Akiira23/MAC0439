@@ -155,23 +155,25 @@ INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_
    VALUES (53, TRUE, 800, 'Boston Celtics', 1.4, '2020-01-04 07:37:50 PM', 505, 1, 6);
 INSERT INTO aposta (aposta_ID, venceu_aposta, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
    VALUES (54, FALSE, 500, 'Chicago Bulls', 1.9, '2020-01-04 07:45:07 PM', 505, 1, 12);
-
+INSERT INTO aposta (aposta_ID, valor, aposta_vencedor, odd, data_hora, partida_ID, torneio_ID, id_usuario_aposta)
+   SELECT 55, 320, 'Chiefs', 1.4, '2020-06-08 11:00:14 AM', 4, 199, 9
+   WHERE EXISTS(SELECT user_id FROM usuario WHERE saldo >= 320 AND user_id = 9);
 /*USUARIO_PREMIUM*/
 
-INSERT INTO usuario_premium (premium_ID, projeto_ID)
-   VALUES (9, 1);
-INSERT INTO usuario_premium (premium_ID, projeto_ID)
-   VALUES (10, 2);
-INSERT INTO usuario_premium (premium_ID, projeto_ID)
-   VALUES (11, 3);
-INSERT INTO usuario_premium (premium_ID, projeto_ID)
-   VALUES (12, 4);
-INSERT INTO usuario_premium (premium_ID, projeto_ID)
-   VALUES (13, 5);
-INSERT INTO usuario_premium (premium_ID, projeto_ID)
-   VALUES (14, 6);
-INSERT INTO usuario_premium (premium_ID, projeto_ID)
-   VALUES (22, 7);
+INSERT INTO usuario_premium (premium_ID)
+   VALUES (9);
+INSERT INTO usuario_premium (premium_ID)
+   VALUES (10);
+INSERT INTO usuario_premium (premium_ID)
+   VALUES (11);
+INSERT INTO usuario_premium (premium_ID)
+   VALUES (12);
+INSERT INTO usuario_premium (premium_ID)
+   VALUES (13);
+INSERT INTO usuario_premium (premium_ID)
+   VALUES (14);
+INSERT INTO usuario_premium (premium_ID)
+   VALUES (22);
    
 /*ORGANIZACAO*/
 
@@ -252,36 +254,36 @@ INSERT INTO pertence (UserPremium_ID, UserOrg_ID)
 /*PROJETO*/
 
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (1, 'Torneio #1');
+   VALUES (9, 'Torneio #1');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (1, 'Torneio 1v1');
+   VALUES (9, 'Torneio 1v1');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (1, 'Pelada da Varzea');
+   VALUES (9, 'Pelada da Varzea');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (2, 'Basquete dos brothers');
+   VALUES (10, 'Basquete dos brothers');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (2, 'Vem no x1');
+   VALUES (10, 'Vem no x1');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (3, 'Torneio aquele');
+   VALUES (11, 'Torneio aquele');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (4, 'Torneio 356');
+   VALUES (12, 'Torneio 356');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (5, 'Pelada da facul');
+   VALUES (13, 'Pelada da facul');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (6, 'HAND TORN');
+   VALUES (14, 'HAND TORN');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (7, 'TESTE');
+   VALUES (22, 'TESTE');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (3, 'Dream Chasers Fall Classic');
+   VALUES (11, 'Dream Chasers Fall Classic');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (3, 'Shore Through the Uprights Tournament');
+   VALUES (11, 'Shore Through the Uprights Tournament');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (5, 'Beast of the East Tournament');
+   VALUES (13, 'Beast of the East Tournament');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (5, 'Black Diamond  Tournament');
+   VALUES (13, 'Black Diamond  Tournament');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (7, 'Turkey Trot Sandlot Challenge');
+   VALUES (22, 'Turkey Trot Sandlot Challenge');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (1, 'Labor Day Goal Tournament');
+   VALUES (9, 'Labor Day Goal Tournament');
 INSERT INTO projeto (projeto_user_id, nome_projeto)
-   VALUES (2, 'Shore Football Elite Tournament');   
+   VALUES (10, 'Shore Football Elite Tournament');   
