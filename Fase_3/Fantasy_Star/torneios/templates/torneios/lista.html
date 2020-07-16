@@ -1,0 +1,53 @@
+{% load static %}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'esportes/style.css' %}"> -->
+
+<h1> Veja os torneios que acompanhamos </h1>
+
+<div class="torneios-panel">
+    {% for torneios in dados %}
+    <div class="torneios-card">
+        <h3>{{ torneios.nome }}</h3>
+        <br>
+        <b>Esporte: {{ torneios.esporte }}</b>
+        <br>
+        <b>Placares:<br></b>
+            {% for partida in torneios.partidas %}
+            <span> {{ partida.placar }} <br></span>
+            {% endfor %}
+            <br>
+            <br>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    h1 {
+       text-align: center;
+    }
+
+    .torneios-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .torneios-card {
+      margin: 5px 15px;
+      padding-bottom: 10px;
+      border-radius: 5px;
+      border: 4px outset hsl(45, 75%, 45%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .partidas-card:hover {
+        background-color: hsl(210, 65%, 95%);
+    }
+
+    span {
+        font-size: normal;
+        text-align: center;
+    }
+</style>
+
+<a href="{% url 'torneios:index' %}"> Voltar </a>

@@ -6,9 +6,9 @@
 <div class="jogadores-panel">
     {% for jogadores in dados %}
     <div class="jogadores-card">
-        {{ jogadores.nome }}
-        {{ jogadores.genero }}
-        {{ jogadores.idade }}
+        <h1>{{ jogadores.nome }}</h1>
+        <span>Sexo: {{ jogadores.genero }}</span>
+        <span>Idade: {{ jogadores.idade }}</span>
     </div>
     {% endfor %}
 </div>
@@ -24,10 +24,22 @@
     }
 
     .jogadores-card {
-        margin: 5px 15px;
-        border: 3px inset hsl(210, 75%, 60%);
-        display: flex;
-        flex-direction: column;
+      margin: 5px 15px;
+      padding-bottom: 10px;
+      border-radius: 5px;
+      border: 4px outset hsl(210, 75%, 45%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .jogadores-card:hover {
+        background-color: hsl(210, 65%, 95%);
+    }
+
+    span {
+        font-size: normal;
+        text-align: center;
     }
 </style>
 

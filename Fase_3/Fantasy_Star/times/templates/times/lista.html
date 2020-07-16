@@ -1,0 +1,54 @@
+{% load static %}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'esportes/style.css' %}"> -->
+
+<h1> Veja os times que acompanhamos </h1>
+
+<div class="times-panel">
+    {% for times in dados %}
+    <div class="times-card">
+        <h3>{{ times.nome }}</h3>
+        <br>
+        <b>Treinador: {{ times.treinador.nome }}</b>
+        <br>
+        <b>Participantes:<br></b>
+
+            {% for participante in times.participantes %}
+            <span> {{ participante.nome }} <br></span>
+            {% endfor %}
+            <br>
+            <br>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    h1 {
+       text-align: center;
+    }
+
+    .times-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .times-card {
+      margin: 5px 15px;
+      padding-bottom: 10px;
+      border-radius: 5px;
+      border: 4px outset hsl(45, 75%, 45%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .partidas-card:hover {
+        background-color: hsl(210, 65%, 95%);
+    }
+
+    span {
+        font-size: normal;
+        text-align: center;
+    }
+</style>
+
+<a href="{% url 'times:index' %}"> Voltar </a>
