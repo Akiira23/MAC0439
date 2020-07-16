@@ -99,7 +99,7 @@ DATABASES = {
         'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '27017',
-    }
+    },
 
     'neo4j' : {
         'HOST':'localhost',
