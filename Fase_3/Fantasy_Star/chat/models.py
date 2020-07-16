@@ -131,6 +131,13 @@ class Chat(models.Model):
             return u
         return False
 
+    def get_user_chats(username):
+        query = "MATCH (u:User)-[:PARTICIPATES_IN]->(c:Chat) where u.nome = '{}' RETURN c"
+        chatlist = []
+        for c, in g.run(query.format(username)):
+            chatlist.append(c)
+        return chatlist
+
     def get_participants(chatname):
         query = "MATCH (u:User)-[:PARTICIPATES_IN]->(c:Chat) where c.nome = '{}' RETURN u"
         user_list = []
@@ -140,6 +147,12 @@ class Chat(models.Model):
             user_list.append(u)
         return user_list
 
+    def get_messages(chatname):
+        query = "MATCH (u:User)-[:SENT]->(m:Message)-[:SENT_IN]->(c:Chat) where c.nome = '{}' RETURN u, m ORDER BY m.timestamp"
+        msg_list = []
+        for u, m in g.run(query.format(chatname)):
+            msg_list.append({'user':u, 'message':m})
+        return msg_list
 
     class Meta:
         managed = True

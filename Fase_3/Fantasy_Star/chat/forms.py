@@ -10,8 +10,18 @@ class UserForm(forms.Form):
         nome = self.cleaned_data.get("nome")
         email = self.cleaned_data.get("email")
         if User.find(nome):
-            raise forms.ValidationError("FUDEU")
             raise forms.ValidationError("Já existe um usuário com este nome!")
         return nome, email
 
     
+class ChatForm(forms.Form):
+    mensagem = forms.CharField()
+    convidar = forms.CharField()
+
+    def clean(self, *args, **kwargs):
+        mensagem = self.cleaned_data.get("mensagem")
+        if mensagem == '':
+            raise forms.ValidationError("Escreva uma mensagem!")
+        if not User.find(convidar):
+            raise forms.ValidationError("Este usuário não existe!")
+        return mensagem

@@ -2,12 +2,16 @@
 <link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
 
 <h1>{{title}}</h1>
+<h3>{{subtitle}}</h3>
 {% if list %}
     <div>
         {% for chat in list %}
-            {{ chat.nome }}</br>
+            <a href="{% url 'chat:chat' chat.nome %}">{{ chat.nome }}</a>
+            </br>
         {% endfor %}
     </div>
 {% else %}
     <p>Sem chats por aqui.</p>
 {% endif %}
+</br>
+<a type="submit" href="{% url 'chat:index' %}">Voltar</a>

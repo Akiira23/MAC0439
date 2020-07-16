@@ -3,11 +3,19 @@
 
 <h1>{{title}}</h1>
 {% if list %}
-    <div>
-        {% for user_msg in list %}
-            {{ user_msg.message.timestamp }} - {{ user_msg.user.nome }} - {{ user_msg.message.conteudo }}</br>
-        {% endfor %}
-    </div>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            {% for user_msg in list %}
+                {{ user_msg.user.nome }}: {{ user_msg.message.conteudo }}</br>
+            {% endfor %}
+            {{form}}
+            </br>
+            </br>
+            <button class="message_box" type="submit">Enviar</button>
+        </form>
+    </body>
 {% else %}
     <p>Sem mensagens por aqui.</p>
 {% endif %}
+<a type="submit" href="{% url 'chat:user_page' username %}">Voltar</a>

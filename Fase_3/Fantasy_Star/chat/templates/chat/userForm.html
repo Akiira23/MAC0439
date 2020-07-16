@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
 
 <h1>{{title}}</h1>
-<div>
+<body>
     <form method="post">
         {% csrf_token %}
         {{form}}
@@ -11,5 +11,8 @@
         </br>
         </br>
         <button type="submit">Criar</button>
+        <button type="submit">Convidar</button>
+        </br>
+        <a type="submit" href="{% url 'chat:index' %}">Voltar</a>
     </form>
-</div>
+</body>

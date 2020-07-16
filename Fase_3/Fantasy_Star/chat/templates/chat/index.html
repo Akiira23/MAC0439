@@ -2,11 +2,14 @@
 <link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
 
 <h1>{{title}}</h1>
+<h2>{{subtitle}}</h2>
 {% if list %}
     <div>
         {% for user in list %}
-            {{ user.nome }} - {{ user.email }}</br>
+            <a href="{% url 'chat:user_page' user.nome %}">{{ user.nome }}</a> - {{ user.email }}</br>
         {% endfor %}
+        </br>
+        <a href="{% url 'chat:register_user' %}">Novo</a>
     </div>
 {% else %}
     <p>Sem usuários por aqui.</p>

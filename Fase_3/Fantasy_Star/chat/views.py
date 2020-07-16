@@ -12,17 +12,21 @@ g = Graph(uri="bolt://localhost:7687", password="123", name="Chat")
 def index(request):
     # user_list = Graph().objects.order_by('-nome')[:10]
     user_nodes = g.nodes.match("User")
-    context = {'list': user_nodes, 'title': "Usuários"}
+    context = {
+        'list': user_nodes,
+        'title': "Usuários"
+    }
     return render(request, 'chat/index.html', context)
 
-# def register_user(request):
-#     username = 'CHAT'
-#     email = 'email'
-#     u = User()
-#     u.register(username, email)
-#     user_nodes = g.nodes.match("User")
-#     context = {'list': user_nodes, 'title': "Usuários"}
-#     return render(request, 'chat/new.html', context)
+def user_page(request, nome):
+    request.session['username'] = nome
+    chat_nodes = Chat.get_user_chats(nome)
+    context = {
+        'list': chat_nodes,
+        'title': "Bem vindo, "+nome+"!",
+        'subtitle': "Estes são seus chats"
+    }
+    return render(request, 'chat/userPage.html', context)
 
 def register_user(request):
     if request.method == 'POST':
@@ -37,6 +41,27 @@ def register_user(request):
     else:
         form = UserForm()
     return render(request, 'chat/userForm.html', {'form':form, 'title':"Criar usuário"})
+
+def chat(request, nome):
+    username = request.session['username']
+    messages = Chat.get_messages(nome)
+    if request.method == 'POST':
+        form = ChatForm(request.POST)
+
+        if form.is_valid():
+            print("clean data: ", form.cleaned_data)
+            mensagem = form.cleaned_data
+            Message.send(username, nome, mensagem)
+            return redirect('/chat/messages/'+nome)
+    else:
+        form = ChatForm()
+    context = {
+        'form':form,
+        'title':nome,
+        'list':messages,
+        'username':username,
+    }
+    return render(request, 'chat/chat.html', context)
 
 def friend(request):
     u1 = 'boyes'
@@ -61,11 +86,6 @@ def register_chat(request):
     chat_nodes = g.nodes.match("Chat")
     context = {'list': chat_nodes, 'title': "Chats"}
     return render(request, 'chat/index.html', context)
-
-def chats_index(request):
-    chat_nodes = g.nodes.match("Chat")
-    context = {'list': chat_nodes, 'title': "Chats"}
-    return render(request, 'chat/chatsIndex.html', context)
 
 def chat_participants(request):
     chatname = 'Miltongrado'
