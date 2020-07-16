@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+# from neomodel import config
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chat.apps.Neo4JConfig',
     'aposta.apps.ApostaConfig',
     'esportes.apps.EsportesConfig',
     'jogadores.apps.JogadoresConfig',
@@ -84,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'FantasyStar',
         'USER': 'postgres',
-        'PASSWORD': '123',
+        'PASSWORD': 'ri19981234',
         'HOST': 'localhost',
         'PORT': '5432',
     },
@@ -97,7 +100,23 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '27017',
     }
+
+    'neo4j' : {
+        'HOST':'localhost',
+        'NAME':'Chat',
+        'neo4j': 'postgres',
+        'PASSWORD':'123',
+        'PORT':7687,
+        'ENDPOINT':'/db/data'
+    }
 }
+
+# Neo4j database
+# config.DATABASE_URL = 'bolt://localhost:7687'
+# config.ENCRYPTED_CONNECTION  = False
+# config.DATABASE_USER = 'neo4j'
+# os.environ.DATABASE_PASSWORD = '123'
+# NEO4J_PASSWORD='123'
 
 
 # Password validation
