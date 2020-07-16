@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'FantasyStar',
         'USER': 'postgres',
-        'PASSWORD': 'ri19981234',
+        'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '5432',
     },
@@ -99,7 +99,7 @@ DATABASES = {
         'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '27017',
-    }
+    },
 
     'neo4j' : {
         'HOST':'localhost',
