@@ -11,8 +11,21 @@ def index(request):
     org_list = Organizacao.objects.order_by('nome_org')
     torn_id = Aposta.objects.values('torneio_id').distinct().order_by('torneio_id')
     users = Usuario.objects.raw('SELECT * FROM usuario')
+
+    odd_max = Aposta.objects.all().aggregate(Max('odd'))
+    odd_min = Aposta.objects.all().aggregate(Min('odd'))
+    mean_bet = Aposta.objects.all().aggregate(Avg('valor'))
+    qtd_bets = Aposta.objects.aggregate(Count('aposta_id'))
+    sum_bet = Aposta.objects.all().aggregate(Sum('valor'))
+    acertos = Aposta.objects.all().filter(venceu_aposta = True).aggregate(Count('aposta_id'))
+    erros = Aposta.objects.all().filter(venceu_aposta = False).aggregate(Count('aposta_id'))
+    premium = UsuarioPremium.objects.all().aggregate(Count('premium'))
+    usu_premium = UsuarioPremium.objects.all()
+
     return render(request, 'aposta/index.html', {'latest_aposta_list': latest_aposta_list, 
-        'org_list': org_list, 'all_valor': all_valor, 'all_times': all_times, 'users':users, 'torn_id': torn_id})
+        'org_list': org_list, 'all_valor': all_valor, 'all_times': all_times, 'users':users, 'torn_id': torn_id,
+        'odd_max': odd_max, 'odd_min': odd_min, 'mean_bet': mean_bet, 'qtd_bets': qtd_bets, 'sum_bet': sum_bet, 
+        'acertos': acertos, 'erros': erros, 'premium': premium, 'usu_premium': usu_premium})
 
 def detail(request, id_aposta):
     aposta = get_object_or_404(Aposta, pk=id_aposta)
@@ -47,11 +60,22 @@ def search_user(request):
             u_premium = UsuarioPremium.objects.all().filter(premium = u.user_id)
             projetos = Projeto.objects.all().filter(projeto_user = u.user_id)
             n_projetos = Projeto.objects.all().filter(projeto_user = u.user_id).count()
+            n_org = Pertence.objects.all().filter(userpremium_id = u.user_id).count()
+            orgs_u = Pertence.objects.all().filter(userpremium_id = u.user_id)
+            odd_max = Aposta.objects.all().filter(id_usuario_aposta = u.user_id).aggregate(Max('odd'))
+            odd_min = Aposta.objects.all().filter(id_usuario_aposta = u.user_id).aggregate(Min('odd'))
+            mean_bet = Aposta.objects.all().filter(id_usuario_aposta = u.user_id).aggregate(Avg('valor'))
+            qtd_bets = Aposta.objects.filter(id_usuario_aposta = u.user_id).aggregate(Count('aposta_id'))
+            sum_bet = Aposta.objects.all().filter(id_usuario_aposta = u.user_id).aggregate(Sum('valor'))
+        orgs = Organizacao.objects.all()
         aposta_filter = Aposta.objects.order_by('aposta_id')
     else:
         return HttpResponse("Its not posible.")
     return render(request, 'aposta/search_user.html', {'aposta_filter': aposta_filter, 'id_u': id_u, 
-                    'u_premium': u_premium, 'projetos': projetos, 'n_projetos': n_projetos})
+                    'u_premium': u_premium, 'projetos': projetos, 'n_projetos': n_projetos,
+                    'n_org': n_org, 'orgs': orgs, 'orgs_u': orgs_u,
+                    'odd_max': odd_max, 'odd_min': odd_min, 'mean_bet': mean_bet, 
+                    'qtd_bets': qtd_bets, 'sum_bet': sum_bet})
 
 def search_torneio(request):
     a = request.POST['torneio']

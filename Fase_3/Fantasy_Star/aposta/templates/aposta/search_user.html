@@ -5,6 +5,21 @@
     function mul(x, y) {
         return x*y;
     }
+    function porc(x, y) {
+        return 100*(x/y);
+    }
+    function add(x, y) {
+        return x = x + y;
+    }
+    function sub(x, y) {
+        return x = x - y;
+    }
+
+    var apostado = 0;
+    var counter_profit = 0;
+    var counter_total = 0;
+    var profit = 0;
+    var loss = 0;
 </script>
 
 <div id="cabecalho">
@@ -17,7 +32,7 @@
             <h1>Nome: {{ us.nome }}</h1>
         {% endfor %}
         <hr>
-        <h1 id="premium"> PREMIUM </h1>
+        <h1 id="premium" style="text-align: center;"> PREMIUM </h1>
         <hr>
         <h2>Dados</h2>
         <ul>
@@ -33,7 +48,7 @@
         {% endfor %}
         </ul>
         <hr>
-        <h2>Apostas</h2>
+        <h2>Apostas ({{qtd_bets.aposta_id__count}})</h2>
         <ul>
         {% for us in id_u %}
             {% for aposta in aposta_filter %}
@@ -47,22 +62,77 @@
                     <li> Aposta finalizada: {{aposta.aposta_finalizada}} </li>
                     {% if aposta.venceu_aposta %}
                         <li id="prof"> Ganho: R$ <script type="text/javascript">document.write(mul({{aposta.valor}},{{aposta.odd}}))</script> </li>
+                        <script type="text/javascript">
+                            counter_profit = add(counter_profit, 1)
+                            profit = add(profit, mul({{aposta.valor}},{{aposta.odd}}))
+                            apostado = add(apostado, {{aposta.valor}})
+                        </script>
                     {% else %}
                         <li id="loss"> Ganho: R$ 0</li>
+                        <script type="text/javascript">
+                            loss = add(loss, {{aposta.valor}})
+                        </script>
                     {% endif %}
+                    <script type="text/javascript">
+                        counter_total = add(counter_total, 1)
+                    </script>
                     <hr>
                 {% endif %}
             {% endfor %}
         {% endfor %}
         </ul>
+        <h2>Estatísticas </h2>
+        <ul>
+            <li>Acertos:
+            <script type="text/javascript">
+                document.write(counter_profit)
+            </script></li>
+
+            <li>Porcentagem de Acertos:
+            <script type="text/javascript">
+                document.write(porc(counter_profit, counter_total))
+            </script> %</li>
+
+            <li id="prof">Ganho: R$ 
+            <script type="text/javascript">
+                document.write(profit)
+            </script></li>
+
+            <li id="prof">Lucro: R$ 
+            <script type="text/javascript">
+                document.write(sub(profit, apostado))
+            </script></li>
+
+            <li id="loss">Perdido: R$ 
+            <script type="text/javascript">
+                document.write(loss)
+            </script></li>
+
+            <li>Odd maxima: {{odd_max.odd__max}}</li>
+            <li>Odd minima: {{odd_min.odd__min}}</li>
+            <li>Media apostada: R$ {{mean_bet.valor__avg}}</li>
+            <li>Valor total de apostas: R$ {{sum_bet.valor__sum}}</li>
+        </ul>
+
         <hr>
         <a href="{% url 'aposta:index' %}"> Voltar </a>
     </div>
+
     <div class="sessao_conteudo_right">
         <h2 id="premium"> Projetos ({{n_projetos}}) </h2>
         <ul>
             {% for p in projetos %}
                 <li>{{p.nome_projeto}}</li>
+            {% endfor %}
+        </ul>
+        <h2 id="premium"> Organizações ({{n_org}}) </h2>
+        <ul>
+            {% for o_u in orgs_u %}
+                {% for o in orgs %}
+                    {% if o_u.userorg_id == o.organizacao_id %}
+                        <li>{{o.nome_org}}</li>
+                    {% endif  %}
+                {% endfor %}
             {% endfor %}
         </ul>
     </div>
@@ -87,7 +157,7 @@
         {% endfor %}
         </ul>
         <hr>
-        <h2>Apostas</h2>
+        <h2>Apostas ({{qtd_bets.aposta_id__count}})</h2>
         <ul>
         {% for us in id_u %}
             {% for aposta in aposta_filter %}
@@ -101,13 +171,57 @@
                     <li> Aposta finalizada: {{aposta.aposta_finalizada}} </li>
                     {% if aposta.venceu_aposta %}
                         <li id="prof"> Ganho: R$ <script type="text/javascript">document.write(mul({{aposta.valor}},{{aposta.odd}}))</script> </li>
+                        <script type="text/javascript">
+                            counter_profit = add(counter_profit, 1)
+                            profit = add(profit, mul({{aposta.valor}},{{aposta.odd}}))
+                            apostado = add(apostado, {{aposta.valor}})
+                        </script>
                     {% else %}
                         <li id="loss"> Ganho: R$ 0</li>
+                        <script type="text/javascript">
+                            loss = add(loss, {{aposta.valor}})
+                        </script>
                     {% endif %}
+                    <script type="text/javascript">
+                        counter_total = add(counter_total, 1)
+                    </script>
                     <hr>
                 {% endif %}
             {% endfor %}
         {% endfor %}
+
+        </ul>
+        <h2>Estatísticas </h2>
+        <ul>
+            <li>Acertos:
+            <script type="text/javascript">
+                document.write(counter_profit)
+            </script></li>
+
+            <li>Porcentagem de Acertos:
+            <script type="text/javascript">
+                document.write(porc(counter_profit, counter_total))
+            </script> %</li>
+
+            <li id="prof">Ganho: R$ 
+            <script type="text/javascript">
+                document.write(profit)
+            </script></li>
+
+            <li id="prof">Lucro: R$ 
+            <script type="text/javascript">
+                document.write(sub(profit, apostado))
+            </script></li>
+
+            <li id="loss">Perdido: R$ 
+            <script type="text/javascript">
+                document.write(loss)
+            </script></li>
+
+            <li>Odd maxima: {{odd_max.odd__max}}</li>
+            <li>Odd minima: {{odd_min.odd__min}}</li>
+            <li>Media apostada: R$ {{mean_bet.valor__avg}}</li>
+            <li>Valor total de apostas: R$ {{sum_bet.valor__sum}}</li>
         </ul>
         <hr>
         <a href="{% url 'aposta:index' %}"> Voltar </a>

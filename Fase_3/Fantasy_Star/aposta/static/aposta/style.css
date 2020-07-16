@@ -17,9 +17,22 @@ option {
 }
 
 input {
-    color: black;
     font-family: "Copperplate", sans-serif;
-    font-size: 14px; 
+    font-size: 16px; 
+}
+input:link, input:visited {
+    background-color: #78c1ff;
+    color: black;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+input:hover, input:active {
+    background-color: #003f9a;
+    color: white;
 }
 
 h1 {
@@ -39,11 +52,12 @@ body {
 }
 
 #cabecalho{
-    background-color: #83abc7;
+    background-color: #338ac9;
     width: 1810px;
     padding: 5px 2%;
     color: white;
     text-align: center;
+    border-style: outset;
 }
 
 #corpo{
@@ -59,6 +73,7 @@ body {
     font-family: "Copperplate", sans-serif;
     font-size:64px;
     color: #0c2877;
+    text-shadow: 0 0 30px #f2f7fc, 0 0 20px #00b7ff;
 }
 
 .sessao_conteudo{
@@ -73,15 +88,16 @@ body {
     width: 46%;
     background-color: white;
     float: left;
-    padding: 10px 2%;
+    padding: 12px 2%;
     margin-top: 5px;
 }
+
 .sessao_conteudo_right{
     text-align: justify;
     width: 45%;
     background-color: white;
     float: right;
-    padding: 10px 2%;
+    padding: 14px 2%;
     margin-top: 5px;
 }
 
@@ -102,8 +118,22 @@ body {
     color: #ff6700;
 }
 
-#create {
-    color: #343466;
+a {
     font-family: "Copperplate", sans-serif;
-    font-size: 40px;
+    font-size: 18px;
 }
+
+a:link, a:visited {
+    background-color: #78c1ff;
+    color: black;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  a:hover, a:active {
+    background-color: #003f9a;
+    color: white;
+  }
