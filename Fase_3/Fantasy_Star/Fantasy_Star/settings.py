@@ -104,7 +104,7 @@ DATABASES = {
     'neo4j' : {
         'HOST':'localhost',
         'NAME':'Chat',
-        'neo4j': 'postgres',
+        'neo4j': 'neo4j',
         'PASSWORD':'123',
         'PORT':7687,
         'ENDPOINT':'/db/data'
