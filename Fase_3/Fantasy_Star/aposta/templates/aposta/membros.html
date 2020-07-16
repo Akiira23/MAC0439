@@ -1,21 +1,30 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
 
-<h1>{{ org.nome_org }}</h1>
-<h2>CEO </h2>
-<ul>
-    <li>{{ org.ceo }}</li>
-</ul>
-<h2>Membros ({{n_membros}})</h2>
-<ul>
-    {% for p in pertence_list %}
-        {% if p.userorg_id == org.organizacao_id%}
-                {% for u in usu %}
-                    {% if u.user_id == p.userpremium_id %}
-                        <li> {{ u.nome }} </li>
-                    {% endif %}
-                {% endfor %}
-        {% endif %}
-    {% endfor %}
-</ul>
-<a href="{% url 'aposta:index' %}"> Voltar </a>
+<div id="cabecalho">
+    <h1 id="title">Fantasy Star Apostas</h1>
+</div>
+<div id="corpo">
+    <div class="sessao_conteudo">
+        <h1>{{ org.nome_org }}</h1>
+        <hr>
+        <h2>CEO </h2>
+        <ul>
+            <li>{{ org.ceo }}</li>
+        </ul>
+        <h2>Membros ({{n_membros}})</h2>
+        <ul>
+            {% for p in pertence_list %}
+                {% if p.userorg_id == org.organizacao_id%}
+                        {% for u in usu %}
+                            {% if u.user_id == p.userpremium_id %}
+                                <li> {{ u.nome }} </li>
+                            {% endif %}
+                        {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <hr>
+        <a href="{% url 'aposta:index' %}"> Voltar </a>
+    </div>
+</div>

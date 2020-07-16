@@ -1,7 +1,109 @@
-li a {
-    color: green;
+li {
+    color: #343466;
+    font-family: "Copperplate", sans-serif;
+    font-size: 18px;
+}
+
+label {
+    color: #343466;
+    font-family: "Copperplate", sans-serif;
+    font-size: 18px;   
+}
+
+option {
+    color: black;
+    font-family: "Arial";
+    font-size: 14px; 
+}
+
+input {
+    color: black;
+    font-family: "Copperplate", sans-serif;
+    font-size: 14px; 
+}
+
+h1 {
+    font-family: "Copperplate", sans-serif;
+    font-size:40px;
+    color: #003389;
+}
+
+h2 {
+    font-family: "Copperplate", sans-serif;
+    font-size:30px;
+    color: #2b56cc;
 }
 
 body {
-    background: white no-repeat;
+    background:#000f29 no-repeat;
+}
+
+#cabecalho{
+    background-color: #83abc7;
+    width: 1810px;
+    padding: 5px 2%;
+    color: white;
+    text-align: center;
+}
+
+#corpo{
+    background-color: #000f29;
+    width: 1810px;
+    padding: 10px 2%;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#title{
+    font-family: "Copperplate", sans-serif;
+    font-size:64px;
+    color: #0c2877;
+}
+
+.sessao_conteudo{
+    text-align: justify;
+    width: 95%;
+    background-color: white;
+    padding: 10px 2%;
+    margin-top: 5px;
+}
+.sessao_conteudo_left{
+    text-align: justify;
+    width: 46%;
+    background-color: white;
+    float: left;
+    padding: 10px 2%;
+    margin-top: 5px;
+}
+.sessao_conteudo_right{
+    text-align: justify;
+    width: 45%;
+    background-color: white;
+    float: right;
+    padding: 10px 2%;
+    margin-top: 5px;
+}
+
+#prof{
+    font-family: "Copperplate", sans-serif;
+    font-size:18px;
+    color: #0c7742;
+}
+
+#loss{
+    font-family: "Copperplate", sans-serif;
+    font-size:18px;
+    color: #af2222;
+}
+
+#premium{
+    font-family: "Arial", fantasy;
+    color: #ff6700;
+}
+
+#create {
+    color: #343466;
+    font-family: "Copperplate", sans-serif;
+    font-size: 40px;
 }

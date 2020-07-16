@@ -1,39 +1,50 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
-<h1>Criar Aposta</h1>
-<form action="{% url 'aposta:make_aposta' %}" method="post">
-    {% csrf_token %}
-    <label><span style="padding-right:39px"><b> ID aposta: </b></span></label>
-    <input type="text" name="aposta_id" id="aposta_id" value={{qtd_aposta.aposta_id__count}}><br>
 
-    <label><b> Valor da aposta: </b></label>
-    <input type="text" name="valor" id="valor"><br>
+<div id="cabecalho">
+    <h1 id="title">Fantasy Star Apostas</h1>
+</div>
+<div id="corpo">
+    <div class="sessao_conteudo">
+        <h1>Criar Aposta</h1>
+        <hr>
+        <form action="{% url 'aposta:make_aposta' %}" method="post">
+            {% csrf_token %}
+            <label><span style="padding-right:48px"><b> ID aposta: </b></span></label>
+            <input type="text" name="aposta_id" id="aposta_id" value={{qtd_aposta.aposta_id__count}} readonly="readonly"><br>
 
-    <label><span style="padding-right:70px"><b>Time: </b></span></label>
-    <select name="time" id="time">
-        {% for t in times %}
-            <option> {{t.aposta_vencedor}} </option>
-        {% endfor %}
-    </select>
-    <br>
-    <label><span style="padding-right:74px"><b> Odd: </b></span></label>
-    <input type="text" name="odd" id="odd"><br>
+            <label><b> Valor da aposta: </b></label>
+            <input type="text" name="valor" id="valor"><br>
 
-    <label><span style="padding-right:25px"><b> Data e hora: </b></span></label>
-    <input type="datetime-local" name="date_time" id="date_time"><br>
+            <label><span style="padding-right:82px"><b>Time: </b></span></label>
+            <select name="time" id="time">
+                {% for t in times %}
+                    <option> {{t.aposta_vencedor}} </option>
+                {% endfor %}
+            </select>
+            <br>
+            <label><span style="padding-right:89px"><b> Odd: </b></span></label>
+            <input type="text" name="odd" id="odd"><br>
 
-    <label><span style="padding-right:30px"><b> Torneio ID: </b></span></label>
-    <input type="text" name="tid" id="tid" value="{{torneio_id}}" readonly="readonly"><br>
+            <label><span style="padding-right:32px"><b> Data e hora: </b></span></label>
+            <input type="datetime-local" name="date_time" id="date_time"><br>
 
-    <label><span style="padding-right:31px"><b> Partida ID: </b></span></label>
-    <input type="text" name="pid" id="pid" value="{{partida_id}}" readonly="readonly"><br>
+            <label><span style="padding-right:40px"><b> Torneio ID: </b></span></label>
+            <input type="text" name="tid" id="tid" value="{{torneio_id}}" readonly="readonly"><br>
 
-    <label><span style="padding-right:22px"><b>Usuarios ID: </b></span></label>
-    <select name="uid" id="uid">
-        {% for u in users %}
-            <option> {{u.user_id}} </option>
-        {% endfor %}
-    </select>
-    <br><br>
-    <input type="submit" value="Nova aposta">
-</form>
+            <label><span style="padding-right:42px"><b> Partida ID: </b></span></label>
+            <input type="text" name="pid" id="pid" value="{{partida_id}}" readonly="readonly"><br>
+
+            <label><span style="padding-right:30px"><b>Usuarios ID: </b></span></label>
+            <select name="uid" id="uid">
+                {% for u in users %}
+                    <option> {{u.user_id}} </option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input type="submit" value="Nova aposta">
+        </form>
+        <hr>
+        <a href="{% url 'aposta:index' %}"> Voltar </a>
+    </div>
+</div>

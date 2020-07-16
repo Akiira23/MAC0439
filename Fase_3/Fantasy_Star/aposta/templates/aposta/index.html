@@ -1,80 +1,98 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'aposta/style.css' %}">
 
-<h1>Últimas Apostas</h1>
-{% if latest_aposta_list %}
-    <ul>
-        {% for aposta in latest_aposta_list %}
-            <li><a href="{% url 'aposta:detail' aposta.aposta_id %}"> {{ aposta.id_usuario_aposta.nome }} - {{aposta.data_hora}} </a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No bets are available.</p>
-{% endif %}
+<div id="cabecalho">
+    <h1 id="title">Fantasy Star Apostas</h1>
+</div>
 
-<h1>Apostas dos Usuarios</h1>
-<form action="{% url 'aposta:search_user'%}" method="post">
-    {% csrf_token %}
-    <label>Nome do usuario:</label>
-    <select name="user" id="user">
-        <option selected="selected"> Selecionar </option>
-        {% for u in users %}
-            <option>{{u.nome}}</option>
-        {% endfor %}
-    </select>
-    <br>
-    <br>
-    <input type="submit" value="Pesquisar apostas">
-</form>
-<a href="{% url 'aposta:insert_user' %}"> Criar usuario </a>
-<h1>Organizações</h1>
-{% if org_list %}
-    <ul>
-        {% for org in org_list %}
-            <li><a href="{% url 'aposta:membros' org.organizacao_id %}"> {{ org.nome_org }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No bets are available.</p>
-{% endif %}
+<div id="corpo">
+    
+    <div class="sessao_conteudo_left">
+    <h1>Últimas Apostas</h1>
+    {% if latest_aposta_list %}
+        <ul>
+            {% for aposta in latest_aposta_list %}
+                <li><a href="{% url 'aposta:detail' aposta.aposta_id %}"> {{ aposta.id_usuario_aposta.nome }} - {{aposta.data_hora}} </a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bets are available.</p>
+    {% endif %}
 
-<h1>Pesquisas nas apostas</h1>
+    <h1>Apostas dos Usuarios</h1>
+    <form action="{% url 'aposta:search_user'%}" method="post">
+        {% csrf_token %}
+        <label>Nome do usuario:</label>
+        <select name="user" id="user">
+            <option selected="selected"> Selecionar </option>
+            {% for u in users %}
+                <option>{{u.nome}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Pesquisar apostas">
+    </form>
+    <a id="create" href="{% url 'aposta:insert_user' %}"> Criar usuario </a>
+    <br><br>
+    </div>
 
-<form action="{% url 'aposta:search'%}" method="post">
-    {% csrf_token %}
-    <label>Valor da aposta:</label>
-    <select name="valor" id="valor">
-        <option selected="selected" >Selecionar</option>
-        {% for aposta in all_valor %}
-            <option> {{aposta.valor}} </option>
-        {% endfor %}
-    </select>
+    <div class="sessao_conteudo_right">
+    <h1>Organizações</h1>
+    {% if org_list %}
+        <ul>
+            {% for org in org_list %}
+                <li><a href="{% url 'aposta:membros' org.organizacao_id %}"> {{ org.nome_org }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bets are available.</p>
+    {% endif %}
     <br>
-    <br>
-    <label>Nome do time:</label>
-    <select name="times" id="times">
-        <option selected="selected" >Selecionar</option>
-        {% for aposta in all_times %}
-            <option> {{aposta.aposta_vencedor}} </option>
-        {% endfor %}
-    </select>
-    <br>
-    <br>
-    <input type="submit" value="Pesquisar apostas">
-</form>
+    </div>
 
-<h1>Dados dos torneios/Novas Apostas</h1>
+    <div class="sessao_conteudo_right">
+    <h1>Pesquisas por Valor e/ou Time</h1>
 
-<form action="{% url 'aposta:search_torneio'%}" method="post">
-    {% csrf_token %}
-    <label>ID do torneio:</label>
-    <select name="torneio" id="torneio">
-        <option selected="selected" >Selecionar</option>
-        {% for ids in torn_id %}
-            <option> {{ids.torneio_id}} </option>
-        {% endfor %}
-    </select>
+    <form action="{% url 'aposta:search'%}" method="post">
+        {% csrf_token %}
+        <label>Valor da aposta:</label>
+        <select name="valor" id="valor">
+            <option selected="selected" >Selecionar</option>
+            {% for aposta in all_valor %}
+                <option> {{aposta.valor}} </option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label>Nome do time:</label>
+        <select name="times" id="times">
+            <option selected="selected" >Selecionar</option>
+            {% for aposta in all_times %}
+                <option> {{aposta.aposta_vencedor}} </option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Pesquisar apostas">
+    </form>
+
+    <h1>Dados dos torneios/Novas Apostas</h1>
+
+    <form action="{% url 'aposta:search_torneio'%}" method="post">
+        {% csrf_token %}
+        <label>ID do torneio:</label>
+        <select name="torneio" id="torneio">
+            <option selected="selected" >Selecionar</option>
+            {% for ids in torn_id %}
+                <option> {{ids.torneio_id}} </option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Pesquisar dados">
+    </form>
     <br>
-    <br>
-    <input type="submit" value="Pesquisar dados">
-</form>
+    </div>
+
+</div>
