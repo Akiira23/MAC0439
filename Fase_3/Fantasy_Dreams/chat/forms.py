@@ -15,7 +15,7 @@ class UserForm(forms.Form):
 
     
 class ChatPage(forms.Form):
-    mensagem = forms.CharField()
+    mensagem = forms.CharField(label='')
 
     def clean(self, *args, **kwargs):
         mensagem = self.cleaned_data.get("mensagem")
@@ -24,7 +24,7 @@ class ChatPage(forms.Form):
         return mensagem
 
 class ChatForm(forms.Form):
-    nome = forms.CharField()
+    nome = forms.CharField(label='')
 
     def clean(self, *args, **kwargs):
         nome = self.cleaned_data.get("nome")
@@ -33,7 +33,7 @@ class ChatForm(forms.Form):
         return nome
 
 class InviteForm(forms.Form):
-    nome = forms.CharField()
+    nome = forms.CharField(label='')
 
     def clean(self, *args, **kwargs):
         nome = self.cleaned_data.get("nome")
@@ -42,7 +42,7 @@ class InviteForm(forms.Form):
         return nome
 
 class FriendForm(forms.Form):
-    nome = forms.CharField()
+    nome = forms.CharField(label='')
 
     def clean(self, *args, **kwargs):
         friend = self.cleaned_data.get("nome")

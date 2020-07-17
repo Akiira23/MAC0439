@@ -12,6 +12,16 @@ button {
     cursor: pointer;
 }
 
+input[type=text], input[type=email], select {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 .message_box {
     text-align: down;
 }
@@ -24,7 +34,7 @@ body {
 .center {
     margin: auto;
     width: 70%;
-    border: 1px solid #06a4c0;
+    /* border: 1px solid #06a4c0; */
     padding: 4px;
 }
 
@@ -33,7 +43,6 @@ td {
 }
 
 a{
-    background-color: #7dc6f0;
     border: none;
     color: black;
     padding: 1px 3px;
@@ -48,4 +57,11 @@ a:hover{
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+
+h1 {
+    font-size: 50px;
+    color: #36304a;
+    text-align: center;
 }
