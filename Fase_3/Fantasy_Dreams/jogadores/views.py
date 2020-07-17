@@ -22,9 +22,14 @@ def get_single_data(document_id):
     data = collection.find_one({'_id': ObjectId(document_id)})
     return data
 
+
 def index(request):
-    resposta_simples = "<h1>Test MongoDB connection! JOGADORES!</h1>"
-    return HttpResponse(resposta_simples)
+    msg = ""
+    jogadores_name = request.GET.get('name', '')
+    
+    if jogadores_name == '':
+        return lista(request)
+    
 
 def lista(request):
     test_cursor = collection.find()

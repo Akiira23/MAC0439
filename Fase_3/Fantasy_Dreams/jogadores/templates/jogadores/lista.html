@@ -7,11 +7,13 @@
     {% for jogadores in dados %}
     <div class="jogadores-card">
         <h1>{{ jogadores.nome }}</h1>
-        <span>Sexo: {{ jogadores.genero }}</span>
+        <span>Sexo: {{ jogadores.genero }}</span> <br>
         <span>Idade: {{ jogadores.idade }}</span>
     </div>
     {% endfor %}
 </div>
+
+<body style="background-color:#78c1ff;"></body>
 
 <style>
     h1 {
@@ -24,13 +26,13 @@
     }
 
     .jogadores-card {
-      margin: 5px 15px;
-      padding-bottom: 10px;
-      border-radius: 5px;
-      border: 4px outset hsl(210, 75%, 45%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+        margin: 5px 15px;
+        padding-bottom: 10px;
+        background-color: hsl(210, 65%, 80%);
+        border-radius: 5px;
+        border: 4px outset #000f29; 
+        font-size: normal;
+        text-align: center;
     }
 
     .jogadores-card:hover {
@@ -43,4 +45,4 @@
     }
 </style>
 
-<a href="{% url 'jogadores:index' %}"> Voltar </a>
+<a href="http://localhost:8000/"> Voltar </a>
