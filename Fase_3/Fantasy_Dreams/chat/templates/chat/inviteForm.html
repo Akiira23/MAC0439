@@ -1,17 +1,48 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
-
-<h1>{{title}}</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/vendor/bootstrap/css/bootstrap.min.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/fonts/font-awesome-4.7.0/css/font-awesome.min.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/vendor/animate/animate.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/vendor/select2/select2.min.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/vendor/perfect-scrollbar/perfect-scrollbar.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'chat/main.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
+</head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        {{form}}
-
-        <!-- {{form.non_field_errors }} -->
-        </br>
-        </br>
-        <button type="submit">Convidar</button>
-        </br>
-        <a href="{% url 'chat:chat' chatname %}">Voltar</a>
-    </form>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <h1>{{title}}</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{form}}
+                
+                        <!-- {{form.non_field_errors }} -->
+                        </br>
+                        </br>
+                        <button type="submit">Convidar</button>
+                        </br>
+                        <a href="{% url 'chat:chat' chatname %}">Voltar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+</html>

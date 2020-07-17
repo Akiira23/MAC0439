@@ -148,7 +148,7 @@ def invite_user(request, chatname):
         form = InviteForm()
     context = {
         'form':form,
-        'title':"Insira o nome do chat",
+        'title':"Insira o nome do usuário",
         'username':username,
         'chatname':chatname,
     }

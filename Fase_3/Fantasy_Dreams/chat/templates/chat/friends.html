@@ -1,18 +1,64 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
-
-<h1>{{title}}</h1>
-<h2>{{subtitle}}</h2>
-{% if list %}
-    <div>
-        {% for user in list %}
-            <a>{{ user.nome }}</a></br>
-        {% endfor %}
-        </br>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/vendor/bootstrap/css/bootstrap.min.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/fonts/font-awesome-4.7.0/css/font-awesome.min.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/vendor/animate/animate.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/vendor/select2/select2.min.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/vendor/perfect-scrollbar/perfect-scrollbar.css.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'chat/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'chat/main.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <h1>{{title}}</h1>
+                    {% if list %}
+                        <table>
+                            <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">Nome</th>
+                                    <th class="column2">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in list %}
+                                    <tr>
+                                        <td class="column1">{{ user.nome }}</td>
+                                        <td class="column2">{{ user.email }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>Você não tem amigos :(</p>
+                    {% endif %}
+                    <button>
+                        <a href="{% url 'chat:add_friend' %}">Novo amigo</a>
+                    </button>
+                    <button>
+                        <a href="{% url 'chat:user_page' username %}">Voltar</a>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-{% else %}
-    <p>Você não tem amigos :(</p>
-{% endif %}
-<a href="{% url 'chat:add_friend' %}">Novo amigo</a>
-</br>
-<a href="{% url 'chat:user_page' username %}">Voltar</a>
+</body>
+</html>
+
