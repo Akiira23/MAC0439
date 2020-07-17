@@ -66,6 +66,14 @@ class User(models.Model):
             return f1, f2
         return False
 
+    def is_friend(nome1,nome2):
+        u1 = User.find(nome1)
+        u2 = User.find(nome2)
+        query = "MATCH (u1:User)-[:FRIENDS_WITH]->(u2:User) where u1.nome = '{}' and u1.nome = '{}' return u1"
+        for u, in g.run(query.format(nome1,nome2)):
+            return True
+        return False
+
     class Meta:
         managed = True
         db_table = 'user'

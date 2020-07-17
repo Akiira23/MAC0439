@@ -14,14 +14,38 @@ class UserForm(forms.Form):
         return nome, email
 
     
-class ChatForm(forms.Form):
+class ChatPage(forms.Form):
     mensagem = forms.CharField()
-    convidar = forms.CharField()
 
     def clean(self, *args, **kwargs):
         mensagem = self.cleaned_data.get("mensagem")
         if mensagem == '':
             raise forms.ValidationError("Escreva uma mensagem!")
-        if not User.find(convidar):
-            raise forms.ValidationError("Este usuário não existe!")
         return mensagem
+
+class ChatForm(forms.Form):
+    nome = forms.CharField()
+
+    def clean(self, *args, **kwargs):
+        nome = self.cleaned_data.get("nome")
+        if nome == '':
+            raise forms.ValidationError("Escreva um nome para o chat!")
+        return nome
+
+class InviteForm(forms.Form):
+    nome = forms.CharField()
+
+    def clean(self, *args, **kwargs):
+        nome = self.cleaned_data.get("nome")
+        if not User.find(nome):
+            raise forms.ValidationError("Este usuário não existe!")
+        return nome
+
+class FriendForm(forms.Form):
+    nome = forms.CharField()
+
+    def clean(self, *args, **kwargs):
+        friend = self.cleaned_data.get("nome")
+        if not User.find(friend):
+            raise forms.ValidationError("Este usuário não existe!")
+        return friend

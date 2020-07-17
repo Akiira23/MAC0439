@@ -1,0 +1,18 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
+
+<h1>{{title}}</h1>
+<h2>{{subtitle}}</h2>
+{% if list %}
+    <div>
+        {% for user in list %}
+            <a>{{ user.nome }}</a></br>
+        {% endfor %}
+        </br>
+    </div>
+{% else %}
+    <p>Você não tem amigos :(</p>
+{% endif %}
+<a href="{% url 'chat:add_friend' %}">Novo amigo</a>
+</br>
+<a href="{% url 'chat:user_page' username %}">Voltar</a>
