@@ -12,6 +12,7 @@
         </br>
         <button type="submit">Criar</button>
         </br>
-        <a type="submit" href="{% url 'chat:index' %}">Voltar</a>
+        <a type="submit" href="{% url 'chat:user_page' username %}">Convidar</a>
+        <a type="submit" href="{% url 'chat:invite_user' username %}">Voltar</a>
     </form>
 </body>
