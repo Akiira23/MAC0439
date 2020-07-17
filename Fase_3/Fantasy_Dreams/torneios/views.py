@@ -23,8 +23,20 @@ def get_single_data(document_id):
     return data
 
 def index(request):
-    resposta_simples = "<h1>Test MongoDB connection! TORNEIOS!</h1>"
-    return HttpResponse(resposta_simples)
+    msg = ""
+    torneios_name = request.GET.get('name', '')
+    
+    if torneios_name == '':
+        return lista(request)
+    
+    torneio = None
+    try:
+        torneio = collection.find_one({'nome': torneios_name })
+    except expression as identifier:
+        msg = "Não existe esse torneio"
+    finally:
+        return render(request, "torneios/index.html", { 
+            'torneio': torneio})
 
 def lista(request):
     test_cursor = collection.find()
