@@ -5,12 +5,15 @@
 
 <div class="sports-panel">
     {% for esportes in dados %}
+    <a style="color: inherit; text-decoration: none;" href='http://localhost:8000/esportes/?name={{esportes.esporte}}'>
     <div class="sport-card">
         <h3>{{ esportes.esporte }}</h3>
         <span>{{ esportes.descricao }}</span>
     </div>
+    </a>
     {% endfor %}
 </div>
+
 
 <style>
     h1 {
