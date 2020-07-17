@@ -14,16 +14,36 @@
   box-sizing: border-box;
 }
 
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
 body {
   margin: 0;
-  background-color:#78c1ff;
+  background: lightblue no-repeat;
 }
 
 /* Style the header */
 .header {
-  background-color: #f1f1f1;
+  background-color: rgb(31, 77, 92);
   padding: 20px;
   text-align: center;
+  color: white;
 }
 
 /* Style the top navigation bar */
@@ -72,7 +92,7 @@ body {
 </head>
 <body>
 
-<div class="header">
+<div class="header glow">
     <h1>FANTASY DREAMS</h1>
   <p>Where dreams come true</p>
 </div>
@@ -88,22 +108,6 @@ body {
     <a href="http://localhost:8000/chat/">
         chat
     </a>
-</div>
-<div class="row">
-  <div class="column">
-    <h2>Column</h2>
-    <p>aaaaaaaaaaaa</p>
-  </div>
-  
-  <div class="column">
-    <h2>Column</h2>
-    <p>aaaaaaaaaaaa</p>
-  </div>
-  
-  <div class="column">
-    <h2>Column</h2>
-    <p>aaaaaaaaaaaa</p>
-  </div>
 </div>
 
 </body>
