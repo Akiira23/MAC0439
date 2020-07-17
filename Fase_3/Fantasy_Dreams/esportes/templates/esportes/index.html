@@ -6,5 +6,26 @@
   <h2>{{ esporte.descricao }}</h2>
 </div>
 
-{{esporte}}
-{{torneios}}
+<div class="tourments">
+  {% for t in torneios %}
+    <div class="tournment">
+      <h3> {{t.nome}} </h3>
+      <table>
+        <tr>
+          <th>Equipe</th>
+          <th>Placar</th>
+          <th>Equipe</th>
+          <th>Duração</th>
+        </tr>
+        {% for p in t.partidas %}
+          <tr>
+            <td>{{p.times.0.nome}}</td>
+            <td>{{p.placar}}</td>
+            <td>{{p.times.1.nome}}</td>
+            <td>{{p.duracao}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% endfor %}
+</div>

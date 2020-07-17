@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'Fantasy_Dreams.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'FantasyStar',
+        'NAME': 'FantasyDreams',
         'USER': 'postgres',
         'PASSWORD': '123',
         'HOST': 'localhost',
