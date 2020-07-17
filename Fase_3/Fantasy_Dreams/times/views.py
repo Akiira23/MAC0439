@@ -23,8 +23,7 @@ def get_single_data(document_id):
     return data
 
 def index(request):
-    resposta_simples = "<h1>Test MongoDB connection! TIMES!</h1>"
-    return HttpResponse(resposta_simples)
+    return lista(request)
 
 def lista(request):
     test_cursor = collection.find()
