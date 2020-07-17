@@ -5,6 +5,7 @@
 
 <div class="torneios-panel">
     {% for torneios in dados %}
+    <a style="color: inherit; text-decoration: none;" href='http://localhost:8000/torneios/?name={{torneios.nome}}'>
     <div class="torneios-card">
         <h3>{{ torneios.nome }}</h3>
         <br>
@@ -17,8 +18,11 @@
             <br>
             <br>
     </div>
+    </a>
     {% endfor %}
 </div>
+
+<body style="background-color:#78c1ff;"></body>
 
 <style>
     h1 {
@@ -34,10 +38,12 @@
       margin: 5px 15px;
       padding-bottom: 10px;
       border-radius: 5px;
-      border: 4px outset hsl(45, 75%, 45%);
+      background-color: hsl(210, 65%, 80%);
+      border: 4px outset #000f29;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 400px;
     }
 
     .partidas-card:hover {

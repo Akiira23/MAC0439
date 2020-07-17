@@ -1,0 +1,31 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'esportes/style.css' %}">
+
+<div class="title">
+  <h1>{{ torneio.nome }}</h1>
+  <h2>{{ torneio.esporte }}</h2>
+</div>
+
+<body style="background-color:#78c1ff;"></body>
+
+<div class="tourments">
+  <div class="tournment">
+    <h3> {{torneio.nome}} </h3>
+    <table>
+      <tr>
+        <th>Equipe</th>
+        <th>Placar</th>
+        <th>Equipe</th>
+        <th>Duração</th>
+      </tr>
+      {% for p in torneio.partidas %}
+        <tr>
+          <td>{{p.times.0.nome}}</td>
+          <td>{{p.placar}}</td>
+          <td>{{p.times.1.nome}}</td>
+          <td>{{p.duracao}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
