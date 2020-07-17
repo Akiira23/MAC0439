@@ -2,20 +2,25 @@
 <link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
 
 <h1>{{title}}</h1>
-{% if list %}
-    <body>
-        <form method="post">
-            {% csrf_token %}
-            {% for user_msg in list %}
-                {{ user_msg.user.nome }}: {{ user_msg.message.conteudo }}</br>
-            {% endfor %}
-            {{form}}
-            </br>
-            </br>
-            <button class="message_box" type="submit">Enviar</button>
-        </form>
-    </body>
-{% else %}
-    <p>Sem mensagens por aqui.</p>
-{% endif %}
-<a type="submit" href="{% url 'chat:user_page' username %}">Voltar</a>
+<body>
+    {% if list %}
+        {% for user_msg in list %}
+        <div class="center">
+            <table style="width: 100%;table-layout: fixed;">
+                <td style="width: 10%;text-align: left;">{{ user_msg.user.nome }}:</td> <td style="width: 80%;text-align: left;vertical-align: bottom;">{{ user_msg.message.conteudo }}</td>
+            </table>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Sem mensagens por aqui.</p>
+    {% endif %}
+    
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <button class="message_box" type="submit">Enviar</button>
+    </form>
+    <a type="submit" href="{% url 'chat:invite_user' chatname %}">Convidar</a>
+    </br>
+    <a type="submit" href="{% url 'chat:user_page' username %}">Voltar</a>
+</body>

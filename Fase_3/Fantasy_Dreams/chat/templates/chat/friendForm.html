@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}">
+
+<h1>{{title}}</h1>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+
+        <!-- {{form.non_field_errors }} -->
+        </br>
+        </br>
+        <button type="submit">Adicionar</button>
+        </br>
+        <a href="{% url 'chat:user_page' username %}">Voltar</a>
+    </form>
+</body>

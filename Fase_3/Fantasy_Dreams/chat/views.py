@@ -24,7 +24,8 @@ def user_page(request, nome):
     context = {
         'list': chat_nodes,
         'title': "Bem vindo, "+nome+"!",
-        'subtitle': "Estes são seus chats"
+        'subtitle': "Estes são seus chats",
+        'username': nome,
     }
     return render(request, 'chat/userPage.html', context)
 
@@ -42,50 +43,116 @@ def register_user(request):
         form = UserForm()
     return render(request, 'chat/userForm.html', {'form':form, 'title':"Criar usuário"})
 
-def chat(request, nome):
+def chat(request, chatname):
+    request.session['chatname'] = chatname
     username = request.session['username']
-    messages = Chat.get_messages(nome)
+    messages = Chat.get_messages(chatname)
     if request.method == 'POST':
-        form = ChatForm(request.POST)
+        form = ChatPage(request.POST)
 
         if form.is_valid():
             print("clean data: ", form.cleaned_data)
             mensagem = form.cleaned_data
-            Message.send(username, nome, mensagem)
-            return redirect('/chat/messages/'+nome)
+            Message.send(username, chatname, mensagem)
+            return redirect('/chat/messages/'+chatname)
     else:
-        form = ChatForm()
+        form = ChatPage()
     context = {
         'form':form,
-        'title':nome,
+        'title':chatname,
+        'chatname':chatname,
         'list':messages,
         'username':username,
     }
     return render(request, 'chat/chat.html', context)
 
-def friend(request):
-    u1 = 'boyes'
-    u2 = 'Dobberson'
-
-    f1, f2 = User.friend(u1, u2)
-    query_nodes = g.run("MATCH (e1:User {nome: '{}'})-[:FRIENDS_WITH]->(e2:User) RETURN e2".format(u1))
+def friends(request, nome):
+    username = request.session['username']
+    query = "MATCH (e1:User)-[:FRIENDS_WITH]->(e2:User) WHERE e1.nome = '{}' RETURN e2"
+    print(nome)
+    query_nodes = g.run(query.format(nome))
     user_nodes = []
-    print("LISTINHA!")
     for u, in query_nodes: # virgula da o unpack na tupla de um unico valor
-        print(u["nome"])
         user_nodes.append(u)
-    context = {'list': user_nodes, 'title': "Amigos"}
-    return render(request, 'chat/index.html', context)
+    context = {
+        'list': user_nodes,
+        'title': "Meus amigos",
+        'username': username,
+    }
+    return render(request, 'chat/friends.html', context)
+
+def add_friend(request):
+
+    username = request.session['username']
+    if request.method == 'POST':
+        form = FriendForm(request.POST)
+
+        if form.is_valid():
+            print("clean data: ", form.cleaned_data)
+            friend = form.cleaned_data
+            User.friend(username, friend)
+            return redirect('/chat/friends/'+username)
+    else:
+        form = FriendForm()
+    context = {
+        'form':form,
+        'title':"Adicione um amigo",
+        'username':username,
+    }
+    return render(request, 'chat/friendForm.html', context)
 
 def register_chat(request):
-    chatname = 'Miltongrado'
-    username = 'Cerco'
+    username = request.session['username']
+    if request.method == 'POST':
+        form = ChatForm(request.POST)
 
-    chat = Chat.register(chatname)
-    Chat.include_user(username, chatname)
-    chat_nodes = g.nodes.match("Chat")
-    context = {'list': chat_nodes, 'title': "Chats"}
-    return render(request, 'chat/index.html', context)
+        if form.is_valid():
+            print("clean data: ", form.cleaned_data)
+            chatname = form.cleaned_data
+            chat = Chat.register(chatname)
+            Chat.include_user(username, chatname)
+            context = {
+                'form':form,
+                'title':chatname,
+                'list':None,
+                'username':username,
+                'chatname':chatname,
+            }
+            return redirect('/chat/messages/'+chatname)
+    else:
+        form = ChatForm()
+    context = {
+        'form':form,
+        'title':"Insira o nome do chat",
+        'username':username,
+    }
+    return render(request, 'chat/chatForm.html', context)
+
+def invite_user(request, chatname):
+    username = request.session['username']
+    if request.method == 'POST':
+        form = InviteForm(request.POST)
+
+        if form.is_valid():
+            print("clean data: ", form.cleaned_data)
+            invited = form.cleaned_data
+            Chat.include_user(invited, chatname)
+            context = {
+                'form':form,
+                'title':chatname,
+                'username':username,
+                'invited':invited,
+            }
+            return redirect('/chat/messages/'+chatname)
+    else:
+        form = InviteForm()
+    context = {
+        'form':form,
+        'title':"Insira o nome do chat",
+        'username':username,
+        'chatname':chatname,
+    }
+    return render(request, 'chat/inviteForm.html', context)
 
 def chat_participants(request):
     chatname = 'Miltongrado'

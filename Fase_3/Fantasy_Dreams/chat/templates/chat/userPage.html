@@ -14,4 +14,9 @@
     <p>Sem chats por aqui.</p>
 {% endif %}
 </br>
-<a type="submit" href="{% url 'chat:index' %}">Voltar</a>
+<a type="submit" href="{% url 'chat:register_chat' %}">Criar chat</a>
+</br>
+<a type="submit" href="{% url 'chat:friends' username %}">Meus amigos</a>
+</br>
+</br>
+<a type="submit" href="{% url 'chat:index' %}">Logout</a>
